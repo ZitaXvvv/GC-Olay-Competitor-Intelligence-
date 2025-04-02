@@ -1,0 +1,8 @@
+[4/2/2025 4:17:50 PM][INFO][][0] 工作路径已切换到 F:\美妆网站项目\美妆网站项目\CI\
+[4/2/2025 4:17:50 PM][INFO][main.prj][0] 流程 main.prj 开始运行
+[4/2/2025 4:17:50 PM][INFO][main.prj][0] 进入流程块“查产品”
+[4/2/2025 4:18:16 PM][ERROR][流程块.task][29] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第29行：模块 Excel.OpenExcel 命令出错：创建或打开Excel失败，文件路径不合法或磁盘空间不足。
+(-2147221005, 'Invalid class string', None, None)
+[4/2/2025 4:18:16 PM][INFO][main.prj][0] F:\美妆网站项目\美妆网站项目\CI\main.prj 运行已结束
