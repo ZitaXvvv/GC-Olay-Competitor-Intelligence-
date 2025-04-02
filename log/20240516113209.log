@@ -1,0 +1,9 @@
+[2024/5/16 11:32:09][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/16 11:32:09][INFO][选中的内容][0] 流程 选中的内容 开始运行
+[2024/5/16 11:32:10][ERROR][选中的内容][2] 运行发生错误，流程中止
+错误信息如下：
+选中的内容 第2行：模块 WebBrowserPlugin.UIRobotWebBrowser.Download 命令出错：Exception has been thrown by the target of an invocation.
+下载文件出错信息：System.Net.WebException: The remote server returned an error: (412) Precondition Failed.
+   at System.Net.HttpWebRequest.GetResponse()
+   at WebBrowserPlugin.HttpFileDownload.DeownloadFile(String strFileName, String url, notify nt)
+[2024/5/16 11:32:10][INFO][选中的内容][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\选中的内容 运行已结束

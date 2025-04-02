@@ -1,0 +1,6 @@
+[2024/4/18 9:07:23][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/4/18 9:07:23][INFO][选中的内容][0] 流程 选中的内容 开始运行
+[2024/4/18 9:07:23][ERROR][选中的内容][3] 运行发生错误，流程中止
+错误信息如下：
+选中的内容 第3行： 不合法的参数#0：“DateAdd”（参数类型错误）
+[2024/4/18 9:07:23][INFO][选中的内容][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\选中的内容 运行已结束

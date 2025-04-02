@@ -1,0 +1,7 @@
+[2024/7/8 17:08:05][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/7/8 17:08:05][INFO][流程块1.task][0] 流程 流程块1.task 开始运行
+[2024/7/8 17:37:54][ERROR][流程块1.task][158] 运行发生错误，流程中止
+错误信息如下：
+流程块1.task 第158行：模块 Excel.InsertLastRow 命令出错：末尾插入Excel行失败,请检查Sheet是否存在。
+(-2146777998, 'OLE error 0x800ac472', None, None)
+[2024/7/8 17:37:54][INFO][流程块1.task][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\流程块1.task 运行已结束

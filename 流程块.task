@@ -1,0 +1,369 @@
+dim dic_Competitor,lst_Competitor,hWeb,dictRet,arrayData,dTime,sRet,iRet,src,code,objExcelWorkBook,hWeb_normal,link,spdf_1,istart,arrRet,arrayexcel,reocord_date,upload_time,objRect,objPoint,bRet
+/* 所有competitors在美修大数据网站上的搜索名称*/
+dic_Competitor = {}
+dic_Competitor["PROYA"] = "珀莱雅"
+dic_Competitor["GUYU"] = "谷雨"
+dic_Competitor["OSM"] = "OSM"
+dic_Competitor["KANS"] = "韩束"
+dic_Competitor["LOREAL"] = "欧莱雅"
+dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+
+
+/* 设置时间周期*/
+timepriod = 34 /*天*/
+dTime = Time.Date()
+//dTime = Time.DateSerial(2024, 5, 16)
+sTime = Time.Format(dTime,"yyyy-mm-dd")
+
+/* 打开美修网址*/
+hWeb = WebBrowser.Create("edge","https://bebd.bevol.com/",30000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
+/* 需要手动登录*/
+Window.Show(@ui"窗口_美丽修行大数据BEBD-科学引领美丽，数据驱动未来-用户配置1-MicrosoftEdge","max")
+
+UiElement.Wait(@ui"图像<img>","show",80000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+Delay(10000)
+Mouse.Action(@ui"图像<img>3","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+
+/* 清除excel数据*/
+objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
+
+
+
+
+
+
+Excel.DeleteRange(objExcelWorkBook,"PROYA","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"KANS","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"GUYU","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"LOREAL","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"OSM","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"SKIN CEUTICALS","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"ESTEE LAUDER","A2:M999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"Masterdata","A2:F99999",false)
+
+Excel.DeleteRange(objExcelWorkBook,"Anlyse","A2:H999",false)
+Excel.CloseExcel(objExcelWorkBook,true)
+
+/* 开始查找*/
+
+
+Delay(10000)
+Try
+    Mouse.Action(@ui"图像<img>2","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+    UiElement.Wait(@ui"输入控件<input>","show",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+Catch error1
+End Try
+
+For Each key, value In dic_Competitor
+
+    Keyboard.InputText(@ui"输入控件<input>1",key,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+    Mouse.Action(@ui"按钮<button>_搜索","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+    Delay(2000)
+    For i = 0 To 1 step 1
+        Try
+        If i = 0 
+            Mouse.Action(@ui"输入控件<input>9","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Mouse.Action(@ui"列表项<li>_防晒","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Mouse.Action(@ui"按钮<button>_筛选","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Delay(1000)
+            Mouse.Action(@ui"块级元素<div>_备案时间","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+        Else 
+            
+            
+            Mouse.Action(@ui"输入控件<input>10","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Mouse.Action(@ui"列表项<li>_护肤","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Mouse.Action(@ui"按钮<button>_筛选1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+            Delay(1000)
+        End If
+    
+         Delay(2000)
+        arrayData = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"TABLE","idx":1}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","parentid":"scroll-body","idx":8}]},"iMaxNumberOfPage":3,"iMaxNumberOfResult":-1,"iDelayBetweenMS":2000,"bContinueOnError":False})
+        
+        Mouse.Action(@ui"链接<a>","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+
+        Mouse.Action(@ui"链接<a>","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+        Delay(2000)
+        arrayData_name = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"TABLE","css-selector":"body>div>section>section>main>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>table"}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","parentid":"scroll-body","idx":8}]},"iMaxNumberOfPage":3,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+        
+        i = 0    
+        For Each value In arrayData  
+     
+            t = Time.CDate(value[9], "yyyy.mm.dd")
+            timediff = Time.DateDiff("d",t,dTime)
+            If timediff <= timepriod and timediff > 0
+                product_name = arrayData_name[i][1]
+                TracePrint(product_name)
+                strNum = value[8]/* 记录备案号*/
+                Effect = value[7]/* 记录功效*/
+                iRet = InStr(strNum,"特",1,false)
+                If iRet<>0 /* 是特殊化妆品*/
+                    TracePrint("特：" & strNum)
+                    Delay(5000)
+                    hWeb_normal = WebBrowser.Create("edge","https://www.nmpa.gov.cn/datasearch/",30000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
+                    bRet = UiElement.Exists(@ui"块级元素<div>_选择数据分类关闭←上一步下一步→1",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    If bRet
+                        Try
+                            Mouse.Action(@ui"链接<a>_关闭1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Catch e
+                            
+                        End Try 
+                    End If
+                    UiElement.Wait(@ui"链接<a>_化妆品Cosmetics","show",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    Delay(5000)
+                    Mouse.Action(@ui"链接<a>_化妆品Cosmetics1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                    /* 检查是否是进口*/
+                    iRet_1 = InStr(strNum,"进",1,false)
+                    If iRet_1 <> 0
+                        Mouse.Action(@ui"输入控件<input>_国产特殊化妆品注册信息","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Mouse.Action(@ui"文本<span>_进口特殊化妆品注册信息","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                    End If
+                    
+                    
+                    Keyboard.InputText(@ui"输入控件<input>6",product_name,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+                    Mouse.Action(@ui"按钮<button>","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                    Delay(10000)
+                    
+                    arr_0 = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"TABLE","idx":1}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":'',"iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+                    lenth = UBound(arr_0)
+                    TracePrint(lenth)
+                    If lenth < 0 
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        Continue
+                    End If
+                    /* 确定哪个是当前批件*/
+                    m = 0
+                    For Each value In arr_0 
+                        s = value[4]
+                        If s = "当前批件"
+                            Break
+                        End If
+                        m = m+1
+                    Next
+
+
+                    Mouse.Move(1490, 445+40*m, false,{"iDelayAfter": 300, "iDelayBefore": 200})                
+                    Mouse.Click("left", "click", [],{"iDelayAfter": 300, "iDelayBefore": 300})
+                    
+                    Mouse.Click("left", "click", [],{"iDelayAfter": 300, "iDelayBefore": 300})
+                    Delay(5000)
+                    /* 获取reocord_date和name*/
+                    
+                    arr_1 = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"IFRAME","id":"mobsf"},{"tag":"TABLE","parentid":"new_product"}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":'',"iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+                    name = arr_1[0][1]
+                    If iRet_1 <> 0 
+                        reocord_date = arr_1[11][1]
+                    Else 
+                        reocord_date = arr_1[10][1]
+                    
+                    End If
+                    
+                    /* 获取link*/
+                    If iRet_1 <> 0
+                        Try
+                            Mouse.Action(@ui"链接<a>_查看3","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                            Delay(2000)
+                            Mouse.Action(@ui"表格单元<td>_*.pdf","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                            Delay(3000)
+
+                    
+                            link = WebBrowser.GetURL(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                            WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    
+                            WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        Catch e
+                            link = 'NA'
+                        End Try
+                        
+                    Else 
+                        Try
+                            Mouse.Action(@ui"链接<a>_查看4","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                            Delay(2000)
+                            Mouse.Action(@ui"表格单元<td>_*.pdf","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                            Delay(3000)
+
+                    
+                            link = WebBrowser.GetURL(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                            WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    
+                            WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                            
+                    
+                        Catch e
+                            link = 'NA'
+                        End Try
+                    End If
+                    
+                    
+                    /* 获取intgredient*/
+                
+                    
+                    
+                    If iRet_1 <> 0
+                        Mouse.Action(@ui"文本<span>_查看2","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+
+
+                    Else 
+                    
+                        Mouse.Action(@ui"文本<span>_查看4","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                    End If
+                    Delay(5000)
+                    
+                    link_yanggao=WebBrowser.GetURL(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    Delay(5000)
+                    spdf_1 = UiElement.GetValue(@ui"块级元素<div>_化妆品产品标签样稿项目内容产品名称*注册证编号*",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    
+                    spdf_2 = UiElement.GetValue(@ui"块级元素<div>_*",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    spdf = spdf_1 & spdf_2                          
+                    Delay(2000)
+                    istart=InStr(spdf,"1%（w/w）以上成分",1,false)
+                    iend=InStr(spdf,"其他微量成分",1,false)
+                    spdf=Mid(spdf,istart+11,iend-istart-11)
+                    TracePrint($PrevResult)
+                    
+                    intgredient=Split(spdf,"、")
+                    
+                    
+                    intgredient=Join(intgredient,",")
+                    intgredient = "[" & intgredient
+                    intgredient = intgredient &"]"
+                    TracePrint($PrevResult)
+                    WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    /* 操作excel*/
+                    arrayexcel = [sTime,name,"",'',strNum,reocord_date,intgredient,link,link_yanggao]
+                    objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
+                    Delay(2000)
+                    Excel.ActiveSheet(objExcelWorkBook,key)
+                    Excel.InsertLastRow(objExcelWorkBook,key,arrayexcel,true)
+                    
+                    Excel.CloseExcel(objExcelWorkBook,true)     
+                Else /* 不是特殊化妆品*/
+                    TracePrint(strNum)
+                    /* 进入普通化妆品网站*/
+                    /* 决定是进口的还是普通的*/
+                    iRet_1 = InStr(strNum,"进",1,false)
+                    If iRet_1 <>0 
+                        webset = 'hzpba.nmpa.gov.cn/jkcx/'
+                    Else 
+                        webset ='hzpba.nmpa.gov.cn/gccx/'
+                    
+                    End If
+
+                    hWeb_normal = WebBrowser.Create("edge",webset,30000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
+                    
+                    
+                    UiElement.Wait(@ui"输入控件<input>2","show",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    
+                    Keyboard.InputText(@ui"输入控件<input>3",product_name,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+                    
+                    Mouse.Action(@ui"图像<img>4","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                    /* 识别二维码*/
+                    UiElement.ScreenCapture('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\验证码\验证码.jpeg''',@ui"图像<img>5",{"x":0,"y":0,"width":0,"height":0},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\验证码\\验证码.jpeg"
+                    code = chaojiying.solve_verification_code(src,1902)
+                    Keyboard.InputText(@ui"输入控件<input>4",code,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+                    
+                    Mouse.Action(@ui"按钮<buttoninput>_查询","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+
+                    Delay(2000)
+                    Try
+                        sRet = UiElement.GetValue(@ui"块级元素<div>_抱歉，未检索到相关数据!",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        name = strNum
+
+                    Catch e1
+                        Mouse.Action(@ui"链接<a>_查看","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Delay(2000)
+                        Mouse.Action(@ui"图像<img>6","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        /* 识别二维码*/
+                        UiElement.ScreenCapture('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\验证码\验证码.jpeg''',@ui"图像<img>5",{"x":0,"y":0,"width":0,"height":0},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\验证码\\验证码.jpeg"
+                        code = chaojiying.solve_verification_code(src,1902)
+                        Keyboard.InputText(@ui"输入控件<input>5",code,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+                        Mouse.Action(@ui"按钮<buttoninput>_确定","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Delay(2000)
+                        /* 获取所有数据*/
+                        arrayData_Form = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"TABLE","id":"table1"}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":'',"iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+                        TracePrint(arrayData_Form)
+                        If iRet_1 <>0 
+                            name = arrayData_Form[0][2]
+                            id = arrayData_Form[2][2]
+                            reocord_date = arrayData_Form[3][2]
+                            intgredient = arrayData_Form[13][2]
+                        Else 
+                            name = arrayData_Form[0][2]
+                            id = arrayData_Form[1][2]
+                            reocord_date = arrayData_Form[2][2]
+                            intgredient = arrayData_Form[13][2]
+                        End If
+                        
+                                        
+
+                        intgredient=Replace(intgredient,"\"","",false)
+                        /* mini POC link*/
+                        Mouse.Action(@ui"链接<a>_点击查看","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Delay(1000)
+                        link_poc=WebBrowser.GetURL(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        Delay(1000)
+                        /* 产品包装 link*/
+                        Mouse.Action(@ui"链接<a>_预览1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        
+                        Delay(3000)
+                        
+                        link = WebBrowser.GetURL(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                                        
+                                        
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+
+                        
+                        WebBrowser.Close(hWeb_normal,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                    End Try
+                    
+                    
+                    
+                    arrayexcel = [sTime,name,Effect,reocord_date,strNum,"",intgredient,link,"",link_poc]
+                    
+
+
+                    /* 操作excel*/
+
+                    
+                    objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
+                    Delay(2000)
+                    Excel.ActiveSheet(objExcelWorkBook,key)
+                    Excel.InsertLastRow(objExcelWorkBook,key,arrayexcel,true)
+                    
+                    Excel.CloseExcel(objExcelWorkBook,true)
+                    
+                End If
+            End If
+            i = i+1
+        Next
+
+
+
+
+        Catch e1
+            TracePrint(e1)
+        End Try
+
+    Next
+
+
+
+Next
+WebBrowser.Close(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})

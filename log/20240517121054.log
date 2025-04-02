@@ -1,0 +1,6 @@
+[2024/5/17 12:10:54][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/17 12:10:54][INFO][流程块3.task][0] 流程 流程块3.task 开始运行
+[2024/5/17 12:11:10][ERROR][流程块3.task][46] 运行发生错误，流程中止
+错误信息如下：
+流程块3.task 第46行：只有数组或字典类型才能被索引
+[2024/5/17 12:11:10][INFO][流程块3.task][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\流程块3.task 运行已结束

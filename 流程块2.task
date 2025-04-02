@@ -1,0 +1,70 @@
+Dim objExcelWorkBook,temp,arrayRet,hWeb,iRet
+dic_Competitor = {}
+dic_Competitor["PROYA"] = "珀莱雅"
+dic_Competitor["GUYU"] = "谷雨"
+dic_Competitor["OSM"] = "OSM"
+dic_Competitor["KANS"] = "韩束"
+dic_Competitor["LOREAL"] = "欧莱雅"
+dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+
+dTime = Time.Date()
+dTime = Time.DateSerial(2024, 7, 8)
+sTime = Time.Format(dTime,"yyyy/m/d")
+TracePrint(sTime)
+
+
+
+objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
+
+For Each key, value In dic_Competitor
+    
+
+    src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\PDF" & "\\" & key
+    //TracePrint(src)
+    
+
+    Excel.ActiveSheet(objExcelWorkBook,key)
+    arrayRet = Excel.ReadRange(objExcelWorkBook,key,"A1",true)
+
+    If UBound(arrayRet) <> 0
+
+        For Each value In arrayRet 
+            If value[0] = sTime
+                url = value[7]
+                name = value[1]
+                If url<>'NA' 
+                
+                    hWeb = WebBrowser.Create("edge",url,30000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
+                    //iRet_0 = InStr(url,"hzpsys.nifdc.org.cn",1,false)
+                    iRet_1 = InStr(url,"hzpba.nmpa.gov.cn",1,false)
+                    Delay(10000)
+                    
+                    If iRet_1 <> 0
+                        Keyboard.Press("S", "press", ["Ctrl"],{"iDelayAfter": 300, "iDelayBefore": 200, "sSimulate": "simulate"})
+                        Delay(1000)
+                        
+                        Keyboard.InputText(@ui"窗口_gsxxFilePreview.pdf",name&'.pdf',true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+                        Mouse.Action(@ui"窗口_保存(S)1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Delay(15000)
+                        WebBrowser.Close(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        File.MoveFile('''C:\\Users\\sun.y.32\\Downloads\\''' & name & '''.pdf''',src,false)
+                    Else 
+                        Mouse.Hover(@ui"块级元素<div>",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 10, "iCursorOffsetY": 10, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+                        Mouse.Click("left", "click", [],{"iDelayAfter": 300, "iDelayBefore": 300})
+                        Keyboard.Press("S", "press", ["Ctrl"],{"iDelayAfter": 300, "iDelayBefore": 200, "sSimulate": "simulate"})
+                        Delay(2000)
+                        File.RenameEx('''C:\Users\sun.y.32\Downloads\document.pdf''',name & '''.pdf''')
+                        WebBrowser.Close(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+                        File.MoveFile('''C:\\Users\\sun.y.32\\Downloads\\''' & name & '''.pdf''',src,false)
+                    End If
+                End If
+
+            End If
+        Next
+
+        
+    End If
+
+Next
+Excel.CloseExcel(objExcelWorkBook,true)

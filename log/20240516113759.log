@@ -1,0 +1,7 @@
+[2024/5/16 11:37:59][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/16 11:37:59][INFO][main.prj][0] 流程 main.prj 开始运行
+[2024/5/16 11:37:59][INFO][main.prj][0] 进入流程块“查产品”
+[2024/5/16 11:40:43][ERROR][流程块.task][100] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第100行：数组索引越界
+[2024/5/16 11:40:43][INFO][main.prj][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\main.prj 运行已结束

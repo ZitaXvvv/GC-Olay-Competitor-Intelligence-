@@ -1,0 +1,3 @@
+Dim arrayRet
+arrayRet = Outlook.GetMailMessages("sun.y.32@pg.com","收件箱","",true,true,0)
+TracePrint($PrevResult)

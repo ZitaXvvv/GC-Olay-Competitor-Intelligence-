@@ -1,0 +1,7 @@
+[2024/5/17 10:45:37][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/17 10:45:37][INFO][流程块2.task][0] 流程 流程块2.task 开始运行
+[2024/5/17 10:45:45][ERROR][流程块2.task][18] 运行发生错误，流程中止
+错误信息如下：
+流程块2.task 第18行：模块 Excel.OpenExcel 命令出错：打开文件失败，文件不存在或者没有安装Office？
+(-2147352567, '发生意外。', (0, 'Microsoft Excel', 'Microsoft Excel 不能访问文件“C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\CI_List_Ada.xlsx”。 可能的原因有以下几个:\n\n• 文件名称或路径不存在。\n• 文件正被其他程序使用。\n• 您正要保存的工作簿与当前打开的工作簿同名。', 'xlmain11.chm', 0, -2146827284), None)
+[2024/5/17 10:45:45][INFO][流程块2.task][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\流程块2.task 运行已结束

@@ -1,0 +1,7 @@
+[2024/6/5 14:28:24][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/6/5 14:28:24][INFO][流程块3.task][0] 流程 流程块3.task 开始运行
+[2024/6/5 14:28:35][ERROR][流程块3.task][46] 运行发生错误，流程中止
+错误信息如下：
+流程块3.task 第46行：模块 Outlook.SendMail 命令出错：SendMail 异常
+(-2147352567, '发生意外。', (4096, 'Microsoft Outlook', 'Outlook 无法识别一个或多个名称。 ', None, 0, -2147467259), None)
+[2024/6/5 14:28:35][INFO][流程块3.task][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\流程块3.task 运行已结束

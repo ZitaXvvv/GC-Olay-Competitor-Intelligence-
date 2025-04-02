@@ -1,0 +1,6 @@
+[2024/5/6 13:35:09][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/6 13:35:09][INFO][选中的内容][0] 流程 选中的内容 开始运行
+[2024/5/6 13:35:09][ERROR][选中的内容][2] 运行发生错误，流程中止
+错误信息如下：
+选中的内容 第2行：只有数组或字典类型才能被遍历
+[2024/5/6 13:35:09][INFO][选中的内容][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\选中的内容 运行已结束

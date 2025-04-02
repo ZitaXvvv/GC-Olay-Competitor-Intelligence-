@@ -1,0 +1,14 @@
+[2024/5/6 16:24:41][INFO][][0] 工作路径已切换到 C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\
+[2024/5/6 16:24:41][INFO][main.prj][0] 流程 main.prj 开始运行
+[2024/5/6 16:24:41][INFO][main.prj][0] 进入流程块“流程块”
+[2024/5/6 16:24:41][INFO][main.prj][0] 辅助流程开始
+[2024/5/6 16:24:41][INFO][main.prj][0] 进入流程块“流程块1”
+[2024/5/6 16:24:52][ERROR][流程块1.task][3] 流程块1.task 第3行：模块 Mouse.MouseAuto.Action 命令出错：Exception has been thrown by the target of an invocation.
+Exception in Mouse.Action,元素未找到
+[2024/5/6 16:24:52][ERROR][main.prj][0] 辅助流程中发生错误，已中止
+[2024/5/6 16:24:52][INFO][main.prj][0] 辅助流程结束
+[2024/5/6 16:25:03][ERROR][流程块.task][23] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第23行：模块 Mouse.MouseAuto.Action 命令出错：Exception has been thrown by the target of an invocation.
+Exception in Mouse.Action,元素不可用
+[2024/5/6 16:25:03][INFO][main.prj][0] C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI\main.prj 运行已结束
