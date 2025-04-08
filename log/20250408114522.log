@@ -1,0 +1,8 @@
+[4/8/2025 11:45:22 AM][INFO][][0] 工作路径已切换到 F:\美妆网站项目\美妆网站项目\CI\
+[4/8/2025 11:45:23 AM][INFO][main.prj][0] 流程 main.prj 开始运行
+[4/8/2025 11:45:23 AM][INFO][main.prj][0] 进入流程块“查产品”
+[4/8/2025 11:45:47 AM][ERROR][流程块.task][29] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第29行：模块 Excel.OpenExcel 命令出错：创建或打开Excel失败，文件路径不合法或磁盘空间不足。
+(-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Microsoft Excel cannot access the file 'C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\B7508680'. There are several possible reasons:\n\n• The file name or path does not exist.\n• The file is being used by another program.\n• The workbook you are trying to save has the same name as a currently open workbook.", 'xlmain11.chm', 0, -2146827284), None)
+[4/8/2025 11:45:47 AM][INFO][main.prj][0] F:\美妆网站项目\美妆网站项目\CI\main.prj 运行已结束
