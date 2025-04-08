@@ -26,7 +26,7 @@ Delay(10000)
 Mouse.Action(@ui"图像<img>3","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
 
 /* 清除excel数据*/
-objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
+objExcelWorkBook = Excel.OpenExcel('''F:\美妆网站项目\美妆网站项目\CI_List_Ada.xlsx''',true,"Excel","","")
 
 
 

@@ -1,0 +1,8 @@
+[4/8/2025 11:50:08 AM][INFO][][0] 工作路径已切换到 F:\美妆网站项目\美妆网站项目\CI\
+[4/8/2025 11:50:08 AM][INFO][main.prj][0] 流程 main.prj 开始运行
+[4/8/2025 11:50:08 AM][INFO][main.prj][0] 进入流程块“查产品”
+[4/8/2025 11:51:43 AM][ERROR][流程块.task][67] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第67行：模块 Keyboard.KeyboardAuto.InputText 命令出错：Exception has been thrown by the target of an invocation.
+元素不可用
+[4/8/2025 11:51:43 AM][INFO][main.prj][0] F:\美妆网站项目\美妆网站项目\CI\main.prj 运行已结束
