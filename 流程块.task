@@ -270,8 +270,8 @@ For Each key, value In dic_Competitor
 
 						Mouse.Action(@ui"图像<img>4", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 						/* 识别二维码*/
-						UiElement.ScreenCapture('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\验证码\验证码.jpeg''', @ui"图像<img>5", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
-						src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\验证码\\验证码.jpeg"
+						UiElement.ScreenCapture('''C:\Users\xie.x.3\Documents\验证码.jpeg''', @ui"图像<img>5", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+						src = '''C:\Users\xie.x.3\Documents\验证码.jpeg'''
 						code = chaojiying.solve_verification_code(src, 1902)
 						Keyboard.InputText(@ui"输入控件<input>4", code, true, 20, 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
 
@@ -288,8 +288,8 @@ For Each key, value In dic_Competitor
 							Delay(2000)
 							Mouse.Action(@ui"图像<img>6", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 							/* 识别二维码*/
-							UiElement.ScreenCapture('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\验证码\验证码.jpeg''', @ui"图像<img>5", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
-							src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\验证码\\验证码.jpeg"
+							UiElement.ScreenCapture('''C:\Users\xie.x.3\Documents\验证码.jpeg''', @ui"图像<img>5", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+							src = '''C:\Users\xie.x.3\Documents\验证码.jpeg'''
 							code = chaojiying.solve_verification_code(src, 1902)
 							Keyboard.InputText(@ui"输入控件<input>5", code, true, 20, 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
 							Mouse.Action(@ui"按钮<buttoninput>_确定", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
@@ -368,4 +368,5 @@ For Each key, value In dic_Competitor
 
 Next 
 WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
 
