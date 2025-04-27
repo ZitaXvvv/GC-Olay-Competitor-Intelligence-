@@ -57,14 +57,14 @@ Excel.CloseExcel(objExcelWorkBook,true)
 
 Delay(10000)
 Try
-    Mouse.Action(@ui"图像<img>2","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
+    Mouse.Action(@ui"列表项<li>_搜索","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
     UiElement.Wait(@ui"输入控件<input>","show",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
 Catch error1
 End Try
 
 For Each key, value In dic_Competitor
 
-    Keyboard.InputText(@ui"输入控件<input>1",key,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": false})
+    Keyboard.InputText(@ui"输入控件<input>",key,true,20,10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": true})
     Mouse.Action(@ui"按钮<button>_搜索","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
     Delay(2000)
     For i = 0 To 1 step 1

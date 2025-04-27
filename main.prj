@@ -142,7 +142,7 @@
             "borders": [
                 {
                     "type": "border",
-                    "selected": 0,
+                    "selected": 1,
                     "size": 250,
                     "minSize": 250,
                     "enableAutoHide": true,
@@ -227,6 +227,7 @@
                     {
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
+                        "selected": 2,
                         "children": [
                             {
                                 "type": "tab",
@@ -241,6 +242,42 @@
                                 "enableClose": false,
                                 "className": "",
                                 "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-flow.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
+                                "name": "流程块",
+                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块4.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
+                                    "type": "task",
+                                    "selector": [
+                                        "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "41597500-fbb8-11ee-a6d7-e34cc2945315",
+                                "name": "查产品",
+                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "41597500-fbb8-11ee-a6d7-e34cc2945315",
+                                    "type": "task",
+                                    "selector": [
+                                        "41597500-fbb8-11ee-a6d7-e34cc2945315"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
                             }
                         ],
                         "active": true
