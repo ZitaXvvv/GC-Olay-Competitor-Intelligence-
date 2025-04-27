@@ -22,7 +22,7 @@ hWeb = WebBrowser.Create("edge", "https://bebd.bevol.com/", 30000, {"bContinueOn
 Window.Show(@ui"窗口_美丽修行大数据BEBD-科学引领美丽，数据驱动未来-用户配置1-MicrosoftEdge", "max")
 
 UiElement.Wait(@ui"图像<img>", "show", 80000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
-Delay(10000)
+Delay(1000)
 Mouse.Action(@ui"图像<img>3", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 
 /* 清除excel数据*/
@@ -55,7 +55,7 @@ Excel.CloseExcel(objExcelWorkBook, true)
 /* 开始查找*/
 
 
-Delay(10000)
+Delay(1000)
 Try 
 	Mouse.Action(@ui"列表项<li>_搜索", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 	UiElement.Wait(@ui"输入控件<input>", "show", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
@@ -243,7 +243,7 @@ For Each key, value In dic_Competitor
 						WebBrowser.Close(hWeb_normal, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 						/* 操作excel*/
 						arrayexcel = [sTime, name, "", '', strNum, reocord_date, intgredient, link, link_yanggao]
-						objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''', true, "Excel", "", "")
+						objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
 						Delay(2000)
 						Excel.ActiveSheet(objExcelWorkBook, key)
 						Excel.InsertLastRow(objExcelWorkBook, key, arrayexcel, true)
@@ -343,7 +343,7 @@ For Each key, value In dic_Competitor
 						/* 操作excel*/
 
 
-						objExcelWorkBook = Excel.OpenExcel('''C:\Users\sun.y.32\OneDrive - Procter and Gamble\Desktop\RPA\美妆网站项目\CI_List_Ada.xlsx''', true, "Excel", "", "")
+						objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
 						Delay(2000)
 						Excel.ActiveSheet(objExcelWorkBook, key)
 						Excel.InsertLastRow(objExcelWorkBook, key, arrayexcel, true)
@@ -368,5 +368,6 @@ For Each key, value In dic_Competitor
 
 Next 
 WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
 
 
