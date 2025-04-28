@@ -70,7 +70,7 @@ For Each key, value In dic_Competitor
 	Keyboard.InputText(@ui"输入控件<input>", key, true, 20, 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 500, "bSetForeground": true, "sSimulate": "message", "bValidate": false, "bClickBeforeInput": true})
 	UiElement.SetCheck(@ui"单选框<radioinput>_1", true, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 	Mouse.Action(@ui"按钮<button>_搜索", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
-	Delay(2000)	
+	Delay(2000)
 
 	For i = 0 To 1 step 1
 		Try 
@@ -162,7 +162,9 @@ For Each key, value In dic_Competitor
 						Delay(5000)
 						/* 获取reocord_date和name*/
 
-						arr_1 = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"scroll-body","class":"group-item-box"}]}, {"ExtractTable": 1, "Columns": []}, {"objNextLinkElement": '', "iMaxNumberOfPage": 5, "iMaxNumberOfResult": -1, "iDelayBetweenMS": 1000, "bContinueOnError": False})
+						arr_1 = UiElement.DataScrap({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"msedge"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"IFRAME","id":"mobsf"},{"tag":"TABLE","parentid":"new_product"}]},{"ExtractTable":1,"Columns":[]},{"objNextLinkElement":'',"iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+						
+
 						name = arr_1[0][1]
 						If iRet_1 <> 0
 							reocord_date = arr_1[11][1]
