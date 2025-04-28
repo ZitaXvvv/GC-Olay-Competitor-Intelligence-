@@ -39,9 +39,13 @@
             },
             "file": "流程块.task",
             "caption": "查产品",
-            "editorMode": "visual",
+            "editorMode": "sourceCode",
             "breakpoints": {
-                "362": "enable"
+                "107": "enable",
+                "113": "enable",
+                "168": "enable",
+                "170": "enable",
+                "366": "enable"
             }
         },
         {
@@ -195,7 +199,7 @@
                 {
                     "type": "border",
                     "selected": 0,
-                    "size": 280,
+                    "size": 281.1875,
                     "minSize": 280,
                     "location": "right",
                     "children": [
@@ -229,7 +233,7 @@
                     {
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
-                        "weight": 110.68580542264753,
+                        "weight": 63.79585326953748,
                         "selected": 2,
                         "children": [
                             {
@@ -288,8 +292,8 @@
                     {
                         "type": "tabset",
                         "id": "buttom",
-                        "weight": 89.31419457735247,
-                        "height": 280,
+                        "weight": 136.20414673046253,
+                        "height": 427,
                         "enableDrop": false,
                         "enableDrag": false,
                         "enableDivide": false,

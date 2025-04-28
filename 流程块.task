@@ -71,8 +71,8 @@ For Each key, value In dic_Competitor
 	UiElement.SetCheck(@ui"单选框<radioinput>_1", true, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 	Mouse.Action(@ui"按钮<button>_搜索", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 	Delay(2000)	
-	// TODO
-	For i = 1 To 1 step 1
+
+	For i = 0 To 1 step 1
 		Try 
 			If i = 0
 				Mouse.Action(@ui"输入控件<input>9", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
