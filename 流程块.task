@@ -352,8 +352,8 @@ For Each key, value In dic_Competitor
 
 						objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
 						Delay(2000)
-						Excel.ActiveSheet(objExcelWorkBook, value)
-						Excel.InsertLastRow(objExcelWorkBook, value, arrayexcel, true)
+						Excel.ActiveSheet(objExcelWorkBook, key)
+						Excel.InsertLastRow(objExcelWorkBook, key, arrayexcel, true)
 
 						Excel.CloseExcel(objExcelWorkBook, true)
 
