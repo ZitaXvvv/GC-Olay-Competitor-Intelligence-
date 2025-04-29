@@ -30,7 +30,7 @@
                 "height": 64
             },
             "next": {
-                "refId": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
+                "refId": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
                 "vertices": []
             },
             "exception": {
@@ -48,15 +48,15 @@
             "type": "task",
             "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
             "rect": {
-                "x": 1061,
-                "y": 300,
+                "x": 1040,
+                "y": 410,
                 "width": 196,
                 "height": 64
             },
             "caption": "查品牌主数据",
             "next": {
                 "vertices": [],
-                "refId": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e"
+                "refId": ""
             },
             "exception": {},
             "file": "流程块1.task",
@@ -69,7 +69,7 @@
             "type": "task",
             "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
             "rect": {
-                "x": 1324,
+                "x": 1054,
                 "y": 300,
                 "width": 196,
                 "height": 64
@@ -90,7 +90,7 @@
             "type": "task",
             "id": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26",
             "rect": {
-                "x": 1584,
+                "x": 1304,
                 "y": 300,
                 "width": 196,
                 "height": 64
@@ -107,7 +107,7 @@
             "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
             "rect": {
                 "x": 772,
-                "y": 457,
+                "y": 433,
                 "width": 196,
                 "height": 64
             },
@@ -123,7 +123,7 @@
             "id": "3c1cc430-24c9-11f0-905d-612d1e9d6fa9",
             "rect": {
                 "x": 1010,
-                "y": 457,
+                "y": 497,
                 "width": 196,
                 "height": 64
             },
@@ -253,7 +253,7 @@
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
                         "weight": 123.17596566523605,
-                        "selected": 3,
+                        "selected": 4,
                         "children": [
                             {
                                 "type": "tab",
@@ -322,6 +322,24 @@
                                 "enableClose": true,
                                 "className": "",
                                 "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+                                "name": "下载pdf",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\CI\\流程块2.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+                                    "type": "task",
+                                    "selector": [
+                                        "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
                             }
                         ],
                         "active": true
@@ -361,7 +379,7 @@
     "flowConfig": {
         "scrollbarPosition": {
             "left": 1939,
-            "top": 843
+            "top": 643
         },
         "zoom": 1.2
     }

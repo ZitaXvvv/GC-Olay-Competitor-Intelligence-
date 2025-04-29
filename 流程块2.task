@@ -20,7 +20,7 @@ objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List
 For Each key, value In dic_Competitor
     
 
-    src = "C:\\Users\\sun.y.32\\OneDrive - Procter and Gamble\\Desktop\\RPA\\美妆网站项目\\PDF" & "\\" & key
+    src = "C:\\Users\\xie.x.3\\Documents\\Olay CI\\PDF" & "\\" & key
     //TracePrint(src)
     
 
@@ -48,15 +48,15 @@ For Each key, value In dic_Competitor
                         Mouse.Action(@ui"窗口_保存(S)1","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
                         Delay(15000)
                         WebBrowser.Close(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-                        File.MoveFile('''C:\\Users\\sun.y.32\\Downloads\\''' & name & '''.pdf''',src,false)
+                        File.MoveFile('''C:\Users\xie.x.3\Documents\Olay CI\PDF''' & name & '''.pdf''',src,false)
                     Else 
                         Mouse.Hover(@ui"块级元素<div>",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 10, "iCursorOffsetY": 10, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
                         Mouse.Click("left", "click", [],{"iDelayAfter": 300, "iDelayBefore": 300})
                         Keyboard.Press("S", "press", ["Ctrl"],{"iDelayAfter": 300, "iDelayBefore": 200, "sSimulate": "simulate"})
                         Delay(2000)
-                        File.RenameEx('''C:\Users\sun.y.32\Downloads\document.pdf''',name & '''.pdf''')
+                        File.RenameEx('''C:\Users\xie.x.3\Documents\Olay CI\PDF\document.pdf''',name & '''.pdf''')
                         WebBrowser.Close(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-                        File.MoveFile('''C:\\Users\\sun.y.32\\Downloads\\''' & name & '''.pdf''',src,false)
+                        File.MoveFile('''C:\Users\xie.x.3\Documents\Olay CI\PDF''' & name & '''.pdf''',src,false)
                     End If
                 End If
 
