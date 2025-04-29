@@ -5,7 +5,7 @@ dic_Competitor = {}
 /*dic_Competitor["PROYA"] = "珀莱雅"
 dic_Competitor["GUYU"] = "谷雨" 
 */
-dic_Competitor["OSM"] = "OSM"
+dic_Competitor["OSM"] = "欧诗漫"
 /*
 //dic_Competitor["KANS"] = "韩束"
 dic_Competitor["LOREAL"] = "欧莱雅"
@@ -161,7 +161,7 @@ For Each key, value In dic_Competitor
 	high = 0
 
 	For i = 0 To iRet_N step 1
-		Excel.InsertLastRow(objExcelWorkBook, "Masterdata", [sTime, value, arr_Name[i], arrlevel[i], arrrisk[i], arrhuoxing[i]], false)
+		Excel.InsertLastRow(objExcelWorkBook, "Masterdata", [sTime, key, arr_Name[i], arrlevel[i], arrrisk[i], arrhuoxing[i]], false)
 
 		sRet = SubStr(arrlevel[i], 1, 1)
 		iRet = CInt(sRet)
@@ -192,7 +192,7 @@ For Each key, value In dic_Competitor
 	Next 
 
 	Excel.ActiveSheet(objExcelWorkBook, "Anlyse")
-	Excel.InsertLastRow(objExcelWorkBook, "Anlyse", [sTime, value, green, yellow, red, low, middle, high], false)
+	Excel.InsertLastRow(objExcelWorkBook, "Anlyse", [sTime, key, green, yellow, red, low, middle, high], false)
 	Excel.CloseExcel(objExcelWorkBook, true)
 
 	WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
