@@ -12,7 +12,7 @@ dic_Competitor["SKIN CEUTICALS"] = "修丽可"
 
 
 /* 设置时间周期*/
-timepriod = 10 /*天*/
+timepriod = 5 /*天*/
 dTime = Time.Date()
 //dTime = Time.DateSerial(2024, 5, 16)
 sTime = Time.Format(dTime, "yyyy-mm-dd")
