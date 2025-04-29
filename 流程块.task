@@ -3,16 +3,16 @@ dim dic_Competitor, lst_Competitor, hWeb, dictRet, arrayData, dTime, sRet, iRet,
 dic_Competitor = {}
 
 dic_Competitor["PROYA"] = "珀莱雅"
-dic_Competitor["GUYU"] = "谷雨"
-dic_Competitor["OSM"] = "欧诗漫"
-dic_Competitor["KANS"] = "韩束"
-dic_Competitor["LOREAL"] = "欧莱雅"
-dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
-dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+//dic_Competitor["GUYU"] = "谷雨"
+//dic_Competitor["OSM"] = "欧诗漫"
+//dic_Competitor["KANS"] = "韩束"
+//dic_Competitor["LOREAL"] = "欧莱雅"
+//dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+//dic_Competitor["SKIN CEUTICALS"] = "修丽可"
 
 
 /* 设置时间周期*/
-timepriod = 5 /*天*/
+timepriod = 60 /*天*/
 dTime = Time.Date()
 //dTime = Time.DateSerial(2024, 5, 16)
 sTime = Time.Format(dTime, "yyyy-mm-dd")
@@ -252,10 +252,10 @@ For Each key, value In dic_Competitor
 						arrayexcel = [sTime, name, "", '', strNum, reocord_date, intgredient, link, link_yanggao]
 						objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
 						Delay(2000)
-						Excel.ActiveSheet(objExcelWorkBook, key)
+						Excel.ActiveSheet(objExcelWorkBook, value)
 						Excel.InsertLastRow(objExcelWorkBook, key, arrayexcel, true)
 
-						Excel.CloseExcel(objExcelWorkBook, true)
+						Excel.CloseExcel(objExcelWorkBook, value)
 					Else /* 不是特殊化妆品*/
 						TracePrint(strNum)
 						/* 进入普通化妆品网站*/
@@ -352,8 +352,8 @@ For Each key, value In dic_Competitor
 
 						objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
 						Delay(2000)
-						Excel.ActiveSheet(objExcelWorkBook, key)
-						Excel.InsertLastRow(objExcelWorkBook, key, arrayexcel, true)
+						Excel.ActiveSheet(objExcelWorkBook, value)
+						Excel.InsertLastRow(objExcelWorkBook, value, arrayexcel, true)
 
 						Excel.CloseExcel(objExcelWorkBook, true)
 
