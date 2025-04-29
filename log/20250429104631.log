@@ -1,0 +1,7 @@
+[4/29/2025 10:46:31 AM][INFO][][0] 工作路径已切换到 C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\CI\
+[4/29/2025 10:46:31 AM][INFO][流程块.task][0] 流程 流程块.task 开始运行
+[4/29/2025 10:46:49 AM][ERROR][流程块.task][32] 运行发生错误，流程中止
+错误信息如下：
+流程块.task 第32行：模块 Excel.OpenExcel 命令出错：创建或打开Excel失败，文件路径不合法或磁盘空间不足。
+(-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Microsoft Excel cannot access the file 'F:\\美妆网站项目\\美妆网站项目\\4D79EC10'. There are several possible reasons:\n\n• The file name or path does not exist.\n• The file is being used by another program.\n• The workbook you are trying to save has the same name as a currently open workbook.", 'xlmain11.chm', 0, -2146827284), None)
+[4/29/2025 10:46:49 AM][INFO][流程块.task][0] C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\CI\流程块.task 运行已结束
