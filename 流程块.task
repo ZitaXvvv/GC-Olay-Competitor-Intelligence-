@@ -2,13 +2,13 @@ dim dic_Competitor, lst_Competitor, hWeb, dictRet, arrayData, dTime, sRet, iRet,
 /* 所有competitors在美修大数据网站上的搜索名称*/
 dic_Competitor = {}
 
-//dic_Competitor["PROYA"] = "珀莱雅"
-//dic_Competitor["GUYU"] = "谷雨"
-//dic_Competitor["OSM"] = "OSM"
+dic_Competitor["PROYA"] = "珀莱雅"
+dic_Competitor["GUYU"] = "谷雨"
+dic_Competitor["OSM"] = "欧诗漫"
 dic_Competitor["KANS"] = "韩束"
-//dic_Competitor["LOREAL"] = "欧莱雅"
-//dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
-//dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+dic_Competitor["LOREAL"] = "欧莱雅"
+dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+dic_Competitor["SKIN CEUTICALS"] = "修丽可"
 
 
 /* 设置时间周期*/
