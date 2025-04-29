@@ -12,7 +12,7 @@ dic_Competitor["PROYA"] = "珀莱雅"
 
 
 /* 设置时间周期*/
-timepriod = 60 /*天*/
+timepriod = 50 /*天*/
 dTime = Time.Date()
 //dTime = Time.DateSerial(2024, 5, 16)
 sTime = Time.Format(dTime, "yyyy-mm-dd")
