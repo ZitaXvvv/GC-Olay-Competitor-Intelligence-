@@ -145,6 +145,8 @@ For Each key, value In dic_Competitor
 							Continue
 						End If
 						/* 确定哪个是当前批件*/
+						// new
+						Mouse.Action(@ui"块级元素<div>_搜索结果：信息提示：国产特殊化妆品注册信息1.批件状态说明：“当前”表示此产品的","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
 						// TODO: 
 						m = 0
 						For Each value In arr_0
@@ -374,6 +376,8 @@ For Each key, value In dic_Competitor
 
 Next 
 WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
+
 
 
 
