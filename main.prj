@@ -331,8 +331,8 @@
             "type": "task",
             "id": "3c1cc430-24c9-11f0-905d-612d1e9d6fa9",
             "rect": {
-                "x": 1100,
-                "y": 510,
+                "x": 1010,
+                "y": 457,
                 "width": 196,
                 "height": 64
             },
@@ -462,6 +462,7 @@
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
                         "weight": 123.17596566523605,
+                        "selected": 5,
                         "children": [
                             {
                                 "type": "tab",
@@ -515,24 +516,6 @@
                             },
                             {
                                 "type": "tab",
-                                "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
-                                "name": "查品牌主数据",
-                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块1.task",
-                                "component": "taskNodeEditor",
-                                "config": {
-                                    "selfControl": true,
-                                    "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
-                                    "type": "task",
-                                    "selector": [
-                                        "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f"
-                                    ]
-                                },
-                                "enableClose": true,
-                                "className": "",
-                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
-                            },
-                            {
-                                "type": "tab",
                                 "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
                                 "name": "下载pdf",
                                 "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块2.task",
@@ -561,6 +544,24 @@
                                     "type": "task",
                                     "selector": [
                                         "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
+                                "name": "查品牌主数据",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\CI\\流程块1.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
+                                    "type": "task",
+                                    "selector": [
+                                        "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f"
                                     ]
                                 },
                                 "enableClose": true,
@@ -604,9 +605,9 @@
     },
     "flowConfig": {
         "scrollbarPosition": {
-            "left": 1294,
-            "top": 445
+            "left": 1939,
+            "top": 843
         },
-        "zoom": 0.6
+        "zoom": 1.2
     }
 }

@@ -67,6 +67,9 @@ For Each key, value In dic_Competitor
 	Mouse.Action(@ui"块级元素<div>_重置", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 
 	Mouse.Action(@ui"块级元素<div>_确认", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
+	
+
+	
 	For Each value In ['防晒', '护肤'] 
         Mouse.Action(@ui"输入控件<input>13", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 		If value = '防晒' 
