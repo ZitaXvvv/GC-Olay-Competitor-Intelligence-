@@ -139,6 +139,37 @@
             "breakpoints": {
                 "50": "enable"
             }
+        },
+        {
+            "type": "thread_begin",
+            "id": "a7b18d1d-75f9-4279-b767-35750453d9f7",
+            "rect": {
+                "x": 1082,
+                "y": 173,
+                "width": 140,
+                "height": 50
+            },
+            "caption": "辅助流程开始",
+            "next": {
+                "vertices": [],
+                "refId": "0c85f216-ebfb-4800-ac02-9d7283a41cd5"
+            }
+        },
+        {
+            "type": "task",
+            "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
+            "rect": {
+                "x": 1304,
+                "y": 166,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "流程块1",
+            "next": {},
+            "exception": {},
+            "file": "流程块12.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
         }
     ],
     "variables": [
@@ -254,7 +285,7 @@
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
                         "weight": 123.17596566523605,
-                        "selected": 2,
+                        "selected": 5,
                         "children": [
                             {
                                 "type": "tab",
@@ -336,6 +367,24 @@
                                     "type": "task",
                                     "selector": [
                                         "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
+                                "name": "流程块1",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\Digital\\CI New SKU Cross Brand\\流程块12.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
+                                    "type": "task",
+                                    "selector": [
+                                        "0c85f216-ebfb-4800-ac02-9d7283a41cd5"
                                     ]
                                 },
                                 "enableClose": true,

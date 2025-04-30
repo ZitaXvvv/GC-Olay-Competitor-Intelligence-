@@ -1,0 +1,4 @@
+Do While 前置条件
+    TracePrint("解决滑块验证")  
+    Delay(1000)  
+Loop
