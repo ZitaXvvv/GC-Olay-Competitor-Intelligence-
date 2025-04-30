@@ -55,7 +55,7 @@ For Each key, value In dic_Competitor
 					Else
 						Mouse.Hover(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "TopLeft", "iCursorOffsetX": 100, "iCursorOffsetY": 100, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 						Mouse.Click("left", "click", [], {"iDelayAfter": 300, "iDelayBefore": 300})
-						Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 3000, "sSimulate": "uia"})
+						Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 3000, "sSimulate": "simulate"})
                         // 改写下载方式，通过url的命名
                         url_parts = Split(url,"/")
                         filename = url_parts[Len(url_parts)-1]
