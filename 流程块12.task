@@ -7,7 +7,7 @@ Do While True
 		UiElement.ScreenCapture('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\滑块验证图片.png''', @ui"", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 		// offset是整数，表示要拖动多少个像素
         // `pass_captcha`
-		offset = pass_captcha.slider('''C:/Users/xie.x.3/OneDrive%20-%20Procter%20and%20Gamble/Documents/UiBot/creator/Projects/extend/python/pass_captcha.py''')
+		offset = pass_captcha.slider('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Documents\UiBot\creator\Projects\extend\python\pass_captcha.py''')
 		// 精准获取滑块的位置
 		objRect = UiElement.GetRect(@ui"块级元素<div>_请搜索1-10个工厂", "screen", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 		// 计算
