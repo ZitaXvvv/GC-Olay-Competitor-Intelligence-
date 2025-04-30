@@ -81,10 +81,10 @@
             },
             "exception": {},
             "file": "流程块2.task",
-            "editorMode": "visual",
+            "editorMode": "sourceCode",
             "breakpoints": {
                 "2": null,
-                "5": null,
+                "8": null,
                 "11": null,
                 "13": null,
                 "14": null,
@@ -112,14 +112,17 @@
                 "52": null,
                 "53": null,
                 "55": null,
-                "56": null,
+                "56": "disable",
                 "57": null,
                 "58": null,
-                "59": null,
                 "60": null,
                 "61": null,
-                "62": null,
-                "73": null
+                "63": null,
+                "64": null,
+                "65": null,
+                "66": null,
+                "67": null,
+                "79": null
             }
         },
         {

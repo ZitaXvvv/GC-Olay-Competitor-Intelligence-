@@ -56,13 +56,13 @@ For Each key, value In dic_Competitor
 						Mouse.Hover(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "TopLeft", "iCursorOffsetX": 100, "iCursorOffsetY": 100, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 						Mouse.Click("left", "click", [], {"iDelayAfter": 300, "iDelayBefore": 300})
 						Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 3000, "sSimulate": "simulate"})
-                        // 改写下载方式，通过url的命名
-                        url_parts = Split(url,"/")
-                        filename = url_parts[Len(url_parts)-1]
-                        // 拼接出下载的路径
-                        download_path = '''C:\Users\xie.x.3\Downloads\\''' & filename
-                        File.MoveFile(download_path, src)
-                        File.RenameEx(src&'\\'&filename, name&'.pdf')
+						// 改写下载方式，通过url的命名
+						url_parts = Split(url, "/")
+						filename = url_parts[Len(url_parts)-1]
+						// 拼接出下载的路径
+						download_path = '''C:\Users\xie.x.3\Downloads\\''' & filename
+						File.MoveFile(download_path, src)
+						File.RenameEx(src & '\\' & filename, name & '.pdf')
 						Delay(2000)
 						WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 
