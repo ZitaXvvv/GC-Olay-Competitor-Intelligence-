@@ -2,10 +2,10 @@ Dim objExcelWorkBook, temp, arrayRet, hWeb, iRet
 dic_Competitor = {}
 //dic_Competitor["PROYA"] = "珀莱雅"
 //dic_Competitor["GUYU"] = "谷雨"
-dic_Competitor["OSM"] = "欧诗漫"
+//dic_Competitor["OSM"] = "欧诗漫"
 //dic_Competitor["KANS"] = "韩束"
 //dic_Competitor["LOREAL"] = "欧莱雅"
-//dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
 //dic_Competitor["SKIN CEUTICALS"] = "修丽可"
 
 dTime = Time.Date()
