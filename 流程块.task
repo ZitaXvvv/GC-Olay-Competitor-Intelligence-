@@ -88,6 +88,8 @@ For Each key, value In dic_Competitor
 			End If
 
 			Delay(2000)
+			bRet = UiElement.Exists(@ui"文本<span>_抱歉，没有找到与“谷雨”相关的结果您可以",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+
 			arrayData = UiElement.DataScrap({"wnd": [{"cls": "Chrome_WidgetWin_1", "title": "*", "app": "msedge"}, {"cls": "Chrome_RenderWidgetHostHWND", "title": "Chrome Legacy Window"}], "html": [{"tag": "TABLE", "idx": 1}]}, {"ExtractTable": 1, "Columns": []}, {"objNextLinkElement": {"wnd": [{"cls": "Chrome_WidgetWin_1", "title": "*", "app": "msedge"}, {"cls": "Chrome_RenderWidgetHostHWND", "title": "Chrome Legacy Window"}], "html": [{"tag": "A", "parentid": "scroll-body", "idx": 8}]}, "iMaxNumberOfPage": 3, "iMaxNumberOfResult": -1, "iDelayBetweenMS": 2000, "bContinueOnError": False})
 
 			Mouse.Action(@ui"链接<a>", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
@@ -101,7 +103,7 @@ For Each key, value In dic_Competitor
 
 				t = Time.CDate(value[9], "yyyy.mm.dd")
 				timediff = Time.DateDiff("d", t, dTime)
-				If timediff <= timepriod and timediff > 0
+				If timediff <= timepriod and timediff >= 0
 					product_name = arrayData_name[i][1]
 					TracePrint(product_name)
 					strNum = value[8] /* 记录备案号*/
@@ -375,6 +377,8 @@ For Each key, value In dic_Competitor
 
 Next 
 WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
+
 
 
 

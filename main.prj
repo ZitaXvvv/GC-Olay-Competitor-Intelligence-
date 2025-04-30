@@ -39,9 +39,9 @@
             },
             "file": "流程块.task",
             "caption": "查产品",
-            "editorMode": "sourceCode",
+            "editorMode": "visual",
             "breakpoints": {
-                "369": "enable"
+                "371": "enable"
             }
         },
         {
@@ -254,7 +254,7 @@
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
                         "weight": 123.17596566523605,
-                        "selected": 4,
+                        "selected": 2,
                         "children": [
                             {
                                 "type": "tab",
