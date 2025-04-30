@@ -1,0 +1,6 @@
+[4/30/2025 11:53:08 AM][INFO][][0] 工作路径已切换到 C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\
+[4/30/2025 11:53:08 AM][INFO][选中的内容][0] 流程 选中的内容 开始运行
+[4/30/2025 11:53:13 AM][ERROR][选中的内容][5] 运行发生错误，流程中止
+错误信息如下：
+选中的内容 第5行： 尝试去连接一个null值 (字段 'NAME')
+[4/30/2025 11:53:13 AM][INFO][选中的内容][0] C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\选中的内容 运行已结束
