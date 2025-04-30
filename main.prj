@@ -84,45 +84,50 @@
             "editorMode": "sourceCode",
             "breakpoints": {
                 "2": null,
+                "3": null,
                 "8": null,
                 "11": null,
                 "13": null,
                 "14": null,
+                "16": null,
+                "17": null,
                 "18": null,
-                "20": null,
-                "23": null,
+                "19": null,
+                "22": null,
+                "24": null,
                 "27": null,
-                "29": null,
                 "31": null,
                 "33": null,
-                "34": null,
                 "35": null,
-                "36": null,
                 "37": null,
                 "38": null,
                 "39": null,
+                "40": null,
                 "41": null,
+                "42": null,
                 "43": null,
-                "44": null,
-                "46": null,
+                "45": null,
                 "47": null,
                 "48": null,
                 "50": null,
                 "51": null,
                 "52": null,
-                "53": null,
+                "54": null,
                 "55": null,
                 "56": "disable",
                 "57": null,
-                "58": null,
+                "59": null,
                 "60": null,
                 "61": null,
-                "63": null,
+                "62": null,
                 "64": null,
                 "65": null,
-                "66": null,
                 "67": null,
-                "79": null
+                "68": null,
+                "69": null,
+                "70": null,
+                "71": null,
+                "83": null
             }
         },
         {
@@ -237,7 +242,6 @@
             "borders": [
                 {
                     "type": "border",
-                    "selected": 1,
                     "size": 250,
                     "minSize": 250,
                     "enableAutoHide": true,
@@ -369,24 +373,6 @@
                                     "type": "task",
                                     "selector": [
                                         "41597500-fbb8-11ee-a6d7-e34cc2945315"
-                                    ]
-                                },
-                                "enableClose": true,
-                                "className": "",
-                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
-                            },
-                            {
-                                "type": "tab",
-                                "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
-                                "name": "查品牌主数据",
-                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\CI\\流程块1.task",
-                                "component": "taskNodeEditor",
-                                "config": {
-                                    "selfControl": true,
-                                    "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
-                                    "type": "task",
-                                    "selector": [
-                                        "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f"
                                     ]
                                 },
                                 "enableClose": true,
