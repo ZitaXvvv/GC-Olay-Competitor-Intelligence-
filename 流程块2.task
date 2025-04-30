@@ -9,7 +9,7 @@ dic_Competitor["OSM"] = "欧诗漫"
 //dic_Competitor["SKIN CEUTICALS"] = "修丽可"
 
 dTime = Time.Date()
-dTime = Time.DateSerial(2024, 7, 8)
+//dTime = Time.DateSerial(2024, 7, 8)
 sTime = Time.Format(dTime,"yyyy/m/d")
 TracePrint(sTime)
 
@@ -25,12 +25,15 @@ For Each key, value In dic_Competitor
     
 
     Excel.ActiveSheet(objExcelWorkBook,key)
+    
     arrayRet = Excel.ReadRange(objExcelWorkBook,key,"A1",true)
 
     If UBound(arrayRet) <> 0
 
         For Each value In arrayRet 
-            If value[0] = sTime
+            dTimeInTable = Time.CDate(value[0], "mm/dd/yyyy")
+            timediff = dTime - dTimeInTable
+            If timediff < 30
                 url = value[7]
                 name = value[1]
                 If url<>'NA' 
