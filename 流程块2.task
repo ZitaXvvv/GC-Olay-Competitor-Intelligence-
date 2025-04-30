@@ -53,7 +53,7 @@ For Each key, value In dic_Competitor
 						WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 						//File.MoveFile(src & '\\' & name & '''.pdf''', src, false)
 					Else
-						Mouse.Hover(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 10, "iCursorOffsetY": 10, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
+						Mouse.Hover(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "TopLeft", "iCursorOffsetX": 100, "iCursorOffsetY": 100, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
 						Mouse.Click("left", "click", [], {"iDelayAfter": 300, "iDelayBefore": 300})
 						Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 3000, "sSimulate": "uia"})
                         // 改写下载方式，通过url的命名
