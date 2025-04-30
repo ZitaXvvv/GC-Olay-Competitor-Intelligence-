@@ -1,7 +1,7 @@
 Do While True
 	// 判断是否有滑块
 	bRet = UiElement.Exists(@ui"", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
-	If bRet
+	If bRet = 1
 		TracePrint("解决滑块验证")
 		// 截图整个滑块界面
 		UiElement.ScreenCapture('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\滑块验证图片.png''', @ui"", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
@@ -15,6 +15,6 @@ Do While True
         x = Cint(objRect['x']+objRect['width']/2)
         y = Cint(objRect['y']+objRect['height']/2)
         Mouse.Drag(x, y, x+offset, y, "left", [], {"iDelayAfter": 300, "iDelayBefore": 200})
-	End If
+	End If bRet <> 1
     Delay(1000)
 Loop
