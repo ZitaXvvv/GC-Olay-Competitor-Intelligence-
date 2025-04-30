@@ -4,7 +4,7 @@ Do While True
 	If bRet
 		TracePrint("解决滑块验证")
 		// 截图整个滑块界面
-		UiElement.ScreenCapture('''滑块图片路径''', @ui"", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+		UiElement.ScreenCapture('''file:///C:/Users/xie.x.3/OneDrive%20-%20Procter%20and%20Gamble/Documents/UiBot/creator/Projects/extend/python/pass_captcha.py''', @ui"", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 		// offset是整数，表示要拖动多少个像素
         // `pass_captcha`
 		offset = pass_captcha.pass('''滑块图片路径''')
