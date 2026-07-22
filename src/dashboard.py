@@ -289,6 +289,24 @@ GLOBAL_CSS = """
   #MainMenu, footer, header { visibility: hidden; }
   .block-container { padding-top: 1.5rem; padding-bottom: 2rem; }
 
+  /* ── multiselect 选中标签：去掉红色，改为中性蓝灰色 ── */
+  [data-baseweb="tag"] {
+    background-color: #e8edf5 !important;
+    border: 1px solid #c5cfe0 !important;
+    border-radius: 6px !important;
+  }
+  [data-baseweb="tag"] span { color: #1a2b4a !important; font-weight: 500; font-size: 12px; }
+  [data-baseweb="tag"] button {
+    color: #5f7089 !important;
+    background: transparent !important;
+  }
+  [data-baseweb="tag"] button:hover { color: #1a2b4a !important; }
+  /* multiselect 输入框 展开时高亮 */
+  [data-baseweb="select"] [data-testid="stMultiSelectInput"]:focus-within {
+    border-color: #3d7bd9 !important;
+    box-shadow: 0 0 0 2px rgba(61,123,217,.15) !important;
+  }
+
   /* ── 顶部 Hero ── */
   .hero {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -536,6 +554,95 @@ def build_calendar_html(records, selected_brands, months, trans_cache) -> str:
     return html
 
 
+# ─────────────────────────────────────────────
+# 成分中英文词典（INCI / 通用名）
+# ─────────────────────────────────────────────
+_INGR_ZH2EN: dict[str, str] = {
+    # 基础
+    "水": "Water (Aqua)", "去离子水": "Purified Water", "蒸馏水": "Distilled Water",
+    "甘油": "Glycerin", "丙二醇": "Propylene Glycol", "丁二醇": "Butylene Glycol",
+    "戊二醇": "Pentylene Glycol", "己二醇": "Hexylene Glycol",
+    "1,3-丙二醇": "1,3-Propanediol", "双丙甘醇": "Dipropylene Glycol",
+    # 活性成分
+    "透明质酸钠": "Sodium Hyaluronate", "玻尿酸": "Hyaluronic Acid",
+    "烟酰胺": "Niacinamide", "视黄醇": "Retinol", "视黄醇棕榈酸酯": "Retinyl Palmitate",
+    "抗坏血酸": "Ascorbic Acid (Vit.C)", "抗坏血酸葡糖苷": "Ascorbyl Glucoside",
+    "3-邻-乙基抗坏血酸": "Ethyl Ascorbic Acid", "维生素C": "Vitamin C",
+    "生育酚": "Tocopherol (Vit.E)", "生育酚乙酸酯": "Tocopheryl Acetate",
+    "神经酰胺 NP": "Ceramide NP", "神经酰胺 EOP": "Ceramide EOP",
+    "神经酰胺 AP": "Ceramide AP", "神经酰胺 NS": "Ceramide NS",
+    "神经酰胺NP": "Ceramide NP", "神经酰胺EOP": "Ceramide EOP",
+    "角鲨烷": "Squalane", "角鲨烯": "Squalene",
+    "泛醇": "Panthenol", "尿囊素": "Allantoin",
+    "积雪草苷": "Asiaticoside", "积雪草酸": "Asiatic Acid",
+    "羟基积雪草酸": "Madecassic Acid",
+    "积雪草（CENTELLA ASIATICA）提取物": "Centella Asiatica Extract",
+    "积雪草": "Centella Asiatica",
+    "胶原": "Collagen", "水解胶原": "Hydrolyzed Collagen",
+    "肌肽": "Carnosine", "谷胱甘肽": "Glutathione",
+    "虾青素": "Astaxanthin", "辅酶Q10": "Coenzyme Q10",
+    "麦角硫因": "Ergothioneine", "凝血酸": "Tranexamic Acid",
+    # 保湿/调理
+    "甜菜碱": "Betaine", "海藻糖": "Trehalose", "甘露糖醇": "Mannitol",
+    "赤藓醇": "Erythritol", "木糖醇": "Xylitol", "山梨醇": "Sorbitol",
+    "PEG-40氢化蓖麻油": "PEG-40 Hydrogenated Castor Oil",
+    "卡波姆": "Carbomer", "丙烯酸钠": "Sodium Acrylate",
+    "黄原胶": "Xanthan Gum", "卡拉胶": "Carrageenan",
+    "羟乙基纤维素": "Hydroxyethylcellulose",
+    "羟丙基甲基纤维素": "Hydroxypropyl Methylcellulose",
+    # 防腐/稳定
+    "苯氧乙醇": "Phenoxyethanol", "乙基己基甘油": "Ethylhexylglycerin",
+    "1,2-己二醇": "1,2-Hexanediol", "辛酰羟肟酸": "Caprylyl Hydroxamic Acid",
+    "对羟基苯乙酮": "p-Hydroxyacetophenone",
+    "EDTA二钠": "Disodium EDTA", "EDTA": "EDTA",
+    "苯甲酸钠": "Sodium Benzoate",
+    # 防晒
+    "甲氧基肉桂酸乙基己酯": "Ethylhexyl Methoxycinnamate",
+    "二苯酮-3": "Benzophenone-3 (Oxybenzone)",
+    "氧化锌": "Zinc Oxide", "二氧化钛": "Titanium Dioxide",
+    # 乳化/表活
+    "鲸蜡醇": "Cetyl Alcohol", "硬脂醇": "Stearyl Alcohol",
+    "鲸蜡硬脂醇": "Cetearyl Alcohol",
+    "聚二甲基硅氧烷": "Dimethicone", "环五聚二甲基硅氧烷": "Cyclopentasiloxane",
+    "环甲硅油": "Cyclomethicone",
+    "椰油酰两性基二乙酸二钠": "Disodium Cocoamphodiacetate",
+    "月桂醇聚醚硫酸酯钠": "Sodium Laureth Sulfate",
+    "烷基葡萄糖苷": "Alkyl Glucoside", "椰油葡糖苷": "Coco-Glucoside",
+    # 植物提取
+    "白池花（LIMNANTHES ALBA）籽油": "Meadowfoam Seed Oil",
+    "霍霍巴（SIMMONDSIA CHINENSIS）籽油": "Jojoba Seed Oil",
+    "向日葵（HELIANTHUS ANNUUS）籽油": "Sunflower Seed Oil",
+    "山茶（CAMELLIA JAPONICA）籽油": "Camellia Japonica Seed Oil",
+    "角鲨烷": "Squalane",
+    "薰衣草（LAVANDULA ANGUSTIFOLIA）花提取物": "Lavender Flower Extract",
+    "人参": "Panax Ginseng",
+    # 其他常见
+    "香精": "Fragrance (Parfum)", "香料": "Fragrance",
+    "色素": "Pigment/Colorant",
+    "氯化钠": "Sodium Chloride (Salt)",
+    "柠檬酸": "Citric Acid", "苹果酸": "Malic Acid",
+    "精氨酸": "Arginine", "赖氨酸": "Lysine",
+}
+
+
+def _translate_ingr(zh: str) -> str:
+    """翻译单个成分名：精确匹配→局部匹配→原文"""
+    key = zh.strip()
+    if key in _INGR_ZH2EN:
+        return _INGR_ZH2EN[key]
+    # 局部匹配（取最长匹配的英文名）
+    best = ""
+    for zh_k, en_v in _INGR_ZH2EN.items():
+        if zh_k in key and len(zh_k) > len(best):
+            best = en_v
+    # 如有括号内的INCI名，直接提取
+    import re
+    inci = re.findall(r"[A-Z][A-Z\-\s]+[A-Z]", key)
+    if inci:
+        return inci[0].title()
+    return best
+
+
 def _parse_ingr(s: str) -> list[str]:
     """解析成分列表（逗号/中文逗号分隔）"""
     import re
@@ -743,29 +850,37 @@ def main():
     all_brand_keys = list(BRANDS.keys())
     all_years = sorted({r["year"] for r in records}, reverse=True)
 
+    # 品牌显示标签："PROYA / 珀莱雅"
+    brand_labels = [f"{k} / {v}" for k, v in BRANDS.items()]
+    label_to_key = {f"{k} / {v}": k for k, v in BRANDS.items()}
+    default_labels = brand_labels  # 默认全选
+
     # ── 筛选栏 ──
     c1, c2, c3, c4 = st.columns([3, 2, 1.5, 0.5])
 
     with c1:
-        selected_brands = st.multiselect(
-            "品牌", all_brand_keys, default=all_brand_keys,
-            label_visibility="collapsed", placeholder="选择品牌（默认全选）…",
+        sel_brand_labels = st.multiselect(
+            "品牌", brand_labels, default=default_labels,
+            label_visibility="collapsed",
+            placeholder="Select brands (all by default)…",
         )
+        selected_brands = [label_to_key[l] for l in sel_brand_labels if l in label_to_key]
     with c2:
         selected_years = st.multiselect(
-            "年份（最多3年）", all_years,
+            "Year (max 3)", all_years,
             default=all_years[:min(3, len(all_years))],
             max_selections=3,
             label_visibility="collapsed",
+            placeholder="Select up to 3 years…",
         )
     with c3:
         reg_type_filter = st.selectbox(
-            "类型", ["全部", "普通备案", "特殊注册"],
+            "Type", ["全部 All", "普通备案 Filing", "特殊注册 Registration"],
             label_visibility="collapsed",
         )
     with c4:
-        if st.button("全选品牌", use_container_width=True):
-            selected_brands = all_brand_keys
+        if st.button("✔ All", use_container_width=True, help="Select all brands"):
+            st.session_state["展开品牌"] = True  # trigger rerun with all selected
 
     if not selected_brands:
         selected_brands = all_brand_keys
@@ -773,16 +888,15 @@ def main():
         selected_years = all_years[:1]
 
     # ── 过滤 ──
-    filtered = [
-        r for r in records
-        if r["brand_en"] in selected_brands
-        and r["year"] in selected_years
-        and (
-            reg_type_filter == "全部"
-            or (reg_type_filter == "普通备案" and r["reg_type"] == "普通备案")
-            or (reg_type_filter == "特殊注册" and r["reg_type"] == "特殊注册")
-        )
-    ]
+    def _type_match(r):
+        if "特殊" in reg_type_filter: return r["reg_type"] == "特殊注册"
+        if "备案" in reg_type_filter: return r["reg_type"] == "普通备案"
+        return True
+
+    filtered = [r for r in records
+                if r["brand_en"] in selected_brands
+                and r["year"] in selected_years
+                and _type_match(r)]
 
     # ── 统计摘要 ──
     total   = len(filtered)
