@@ -20,8 +20,8 @@ BRANDS = {
     "Chando": "自然堂",
     "Winona": "薇诺娜",
     "Kans": "韩束",
-    "Clains": "娇韵诗",
-}
+    "Clains": "娇韵诗",    "Nivea": "妮维雅",
+    "Shiseido": "资生堂",}
 
 # 搜索类目（美丽修行大数据）
 SEARCH_CATEGORIES = ["防晒", "护肤"]
