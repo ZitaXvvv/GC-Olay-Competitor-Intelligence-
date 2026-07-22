@@ -610,7 +610,25 @@ def search_brand(page: Page, brand_cn: str, brand_en: str) -> list[dict]:
         _handle_yidun_captcha(page)
         page.wait_for_timeout(400)
 
-        page.locator("button.search-btn").first.click(timeout=8000)
+        # 点击搜索按钮（兜底：button 找不到时用 Enter 键）
+        try:
+            btn = page.locator("button.search-btn").first
+            btn.wait_for(state="visible", timeout=4000)
+            btn.click(timeout=6000)
+        except Exception:
+            log.warning("  button.search-btn 不可点，改用 Enter 键搜索")
+            try:
+                search_box.press("Enter")
+            except Exception:
+                # 最后兜底：重新导航到搜索页再按 Enter
+                log.warning("  重新导航到搜索页再重试")
+                _navigate_to_search_page(page)
+                page.wait_for_timeout(1000)
+                sb2 = page.locator("input[placeholder='查找化妆品']").first
+                sb2.click(click_count=3)
+                page.keyboard.press("Delete")
+                sb2.type(brand_cn, delay=80)
+                sb2.press("Enter")
         page.wait_for_timeout(3000)
 
         # 搜索结果加载后可能再触发验证
@@ -692,16 +710,18 @@ def get_nmpa_special_pdf_url(page: Page, reg_num: str, is_imported: bool) -> Opt
     注意：此函数使用调用方传入的 page 对象（已在 run() 中忽略 SSL 错误）。
     """
     try:
-        # 设置更长超时重试导航（NMPA 页面加载较慢）
-        for _attempt in range(2):
+        # 设置更长超时重试导航（NMPA 页面加载较慢，重试3次）
+        for _attempt in range(3):
             try:
-                page.goto(NMPA_DATASEARCH_URL, timeout=50000)
+                page.goto(NMPA_DATASEARCH_URL, timeout=60000)
                 page.wait_for_timeout(5000)
                 # 如果页面有内容了就继续
                 if page.locator("body").inner_text().strip():
                     break
+                log.debug(f"  NMPA 页面尚空，等待后重试 ({_attempt+1}/3)")
+                page.wait_for_timeout(5000)
             except Exception:
-                page.wait_for_timeout(3000)
+                page.wait_for_timeout(4000)
 
         # 诊断：若页面仍为空则截图并退出
         body_text = page.locator("body").inner_text().strip()
@@ -920,6 +940,32 @@ def write_products_to_excel(all_products: dict):
 
 
 # ─────────────────────────────────────────────
+# 搜索页健康检查 & 恢复
+# ─────────────────────────────────────────────
+
+def _navigate_to_search_page(page: Page):
+    """确保 bebd_page 处于搜索页（有 '查找化妆品' 输入框）"""
+    # 如果已经在搜索页，直接返回
+    try:
+        if page.locator("input[placeholder='查找化妆品']").first.count() > 0:
+            return
+    except Exception:
+        pass
+    # 重新导航到 BEBD 首页，然后点搜索菜单
+    try:
+        log.info("  [页面恢复] 重新导航到 BEBD 搜索页…")
+        current_url = page.url
+        if not current_url.startswith("https://bebd.bevol.com"):
+            page.goto(BEBD_URL, timeout=30000)
+            page.wait_for_timeout(2000)
+        page.locator("li.ant-menu-item:has(.menu-search)").first.click(timeout=8000)
+        page.wait_for_selector("input[placeholder='查找化妆品']", timeout=10000)
+        log.info("  [页面恢复] 搜索页已恢复")
+    except Exception as e:
+        log.warning(f"  [页面恢复] 失败: {e}")
+
+
+# ─────────────────────────────────────────────
 # 主入口
 # ─────────────────────────────────────────────
 
@@ -990,6 +1036,9 @@ def run(headless_override: Optional[bool] = None):
 
             for brand_en, brand_cn in BRANDS.items():
                 log.info(f"\n{'─'*50}\n处理品牌: {brand_en}（{brand_cn}）")
+
+                # 每个品牌前做健康检查，防止 NMPA 查询后 BEBD 页面状态丢失
+                _navigate_to_search_page(bebd_page)
 
                 brand_products = search_brand(bebd_page, brand_cn, brand_en)
 
