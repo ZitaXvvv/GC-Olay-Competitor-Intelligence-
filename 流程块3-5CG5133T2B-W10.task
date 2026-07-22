@@ -1,0 +1,72 @@
+Dim objExcelWorkBook, bRet
+dic_Competitor = {}
+dic_Competitor["PROYA"] = "珀莱雅"
+dic_Competitor["GUYU"] = "谷雨"
+dic_Competitor["OSM"] = "欧诗漫"
+dic_Competitor["Kiehls"] = "科颜氏"
+dic_Competitor["LOREAL"] = "欧莱雅"
+dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+dic_Competitor["Lancome"] = "兰蔻"
+dic_Competitor["Chando"] = "自然堂"
+dic_Competitor["Winona"] = "薇诺娜"
+
+dTime = Time.Date()
+//dTime = Time.DateSerial(2024, 7, 8)
+sTime = Time.Format(dTime, "yyyy/m/d")
+TracePrint(sTime)
+
+
+
+objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
+str = ''
+dic_number = {}
+For Each key, value In dic_Competitor
+	arr_ = [-1, -1]
+	Excel.ActiveSheet(objExcelWorkBook, key)
+	arrayRet = Excel.ReadRange(objExcelWorkBook, key, "A1", true)
+	TracePrint(arrayRet)
+	If UBound(arrayRet) <> 0
+		For Each value In arrayRet
+			If value[3] <> ''
+				arr_[0] = arr_[0]+1
+			End If
+			If value[5] <> ''
+				arr_[1] = arr_[1]+1
+
+			End If
+		Next 
+	Else
+		arr_ = [0, 0]
+
+	End If
+
+	dic_number[key] = arr_
+
+Next 
+str = str & '\n'
+Excel.CloseExcel(objExcelWorkBook, true)
+
+TracePrint(dic_number)
+bRet = Outlook.SendMail("iolay.im@pg.com", "xie.x.3@pg.com", "<Info Sharing>CI of new notification & Registration ", "<!DOCTYPE html><html><head>  <style>    table {      font-family: Arial, sans-serif;      border-collapse: collapse;      width: 100%;    }    td, th {      border: 1px solid #dddddd;      text-align: left;      padding: 8px;    }    th {      background-color: #dddddd;    }  </style></head><body>  <h4>Dear GC OLAY SI Team,</h4>  <h4></h4>  <td>This is Ada, nice to connect with you. Please refer to the following table and link of new products completed notification/registration from our key competitors.</td>   <td>I’m still building my capability on CI and look forward to continuously innovating with you!</td>        <table>    <tr>      <th>Brands</th>      <th>Special cosmetics#</th>      <th>Normal cosmetics#</th>    </tr>    <tr>      <td>PROYA</td>      <td>" & Cstr(dic_number['PROYA'][1]) & "</td>      <td>" & Cstr(dic_number['PROYA'][0]) & "</td>    </tr>    <tr>      <td>LOREAL</td>      <td>" & Cstr(dic_number['LOREAL'][1]) & "</td>      <td>" & Cstr(dic_number['LOREAL'][0]) & "</td>    </tr>    <tr>      <td>SKINCEUTICALS</td>      <td>" & Cstr(dic_number['SKIN CEUTICALS'][1]) & "</td>      <td>" & Cstr(dic_number['SKIN CEUTICALS'][0]) & "</td>    </tr>    <tr>      <td>GUYU</td>      <td>" & Cstr(dic_number['GUYU'][1]) & "</td>      <td>" & Cstr(dic_number['GUYU'][0]) & "</td>    </tr>    <tr>      <td>OSM</td>      <td>" & Cstr(dic_number['OSM'][1]) & "</td>      <td>" & Cstr(dic_number['OSM'][0]) & "</td>    </tr>    <tr>      <td>Kiehls</td>      <td>" & Cstr(dic_number['Kiehls'][1]) & "</td>      <td>" & Cstr(dic_number['Kiehls'][0]) & "</td>    </tr>    <tr>      <td>ESTEE LAUDER</td>      <td>" & Cstr(dic_number['ESTEE LAUDER'][1]) & "</td>      <td>" & Cstr(dic_number['ESTEE LAUDER'][0]) & '''</td>    </tr>  </table> <h4>Please refer the followings via,</h4> <h4>Excel(Detail information):<a href="https://pgone.sharepoint.com/sites/ChinaOlayinnovationCI/Shared%20Documents/Forms/AllItems.aspx?viewid=2ddb2cae%2D6f74%2D48c4%2Db8ce%2D409df8974861&noAuthRedirect=1">  (Detail information) </a>      </body></html>''', "html", ['''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx'''], "", "")
+
+/*
+bRet = Outlook.SendMail("xie.x.3@pg.com", "xie.x.3@pg.com", "<Info Sharing>CI of new notification & Registration ", "<!DOCTYPE html><html><head>  <style>    table {     font-family: Arial, sans-serif;      border-collapse: collapse;      width: 100%;    }    td, th {      border: 1px solid #dddddd;      text-align: left;      padding: 8px;    }    th {      background-color: #dddddd;    }  </style></head><body>  <h4>Dear GC OLAY SI Team,</h4><h4></h4>  <td>This is Ada, nice to connect with you. Please refer to the following table and link of new products completed notification/registration from our key competitors.</td>   <td>I’m still building my capability on CI and look forward to continuously innovating with you!</td>        <table>    <tr>      <th>Brands</th>      <th>Special cosmetics#</th>      <th>Normal cosmetics#</th>    </tr>    <tr>      <td>PROYA</td>      <td>" & Cstr(dic_number['PROYA'][1]) & "</td>      <td>" & Cstr(dic_number['PROYA'][0]) & "</td>    </tr>    <tr>      <td>LOREAL</td>      <td>" & Cstr(dic_number['LOREAL'][1]) & "</td>      <td>" & Cstr(dic_number['LOREAL'][0]) & "</td>    </tr>     <tr>
+    <td>BQL</td>
+    <td>" & Cstr(dic_number["BQL"][1]) & "</td>
+    <td>" & Cstr(dic_number["BQL"][0]) & "</td>
+  </tr>
+  <tr>
+    <td>Chando</td>
+    <td>" & Cstr(dic_number["Chando"][1]) & "</td>
+    <td>" & Cstr(dic_number["Chando"][0]) & "</td>
+  </tr>
+  <tr>
+    <td>Winona</td>
+    <td>" & Cstr(dic_number["Winona"][1]) & "</td>
+    <td>" & Cstr(dic_number["Winona"][0]) & "</td>
+  </tr>
+ <tr>      <td>SKINCEUTICALS</td>      <td>" & Cstr(dic_number['SKIN CEUTICALS'][1]) & "</td>      <td>" & Cstr(dic_number['SKIN CEUTICALS'][0]) & "</td>    </tr>    <tr>      <td>GUYU</td>      <td>" & Cstr(dic_number['GUYU'][1]) & "</td>      <td>" & Cstr(dic_number['GUYU'][0]) & "</td>    </tr>    <tr>      <td>OSM</td>      <td>" & Cstr(dic_number['OSM'][1]) & "</td>      <td>" & Cstr(dic_number['OSM'][0]) & "</td>    </tr>    <tr>      <td>Kiehls</td>      <td>" & Cstr(dic_number['Kiehls'][1]) & "</td>      <td>" & Cstr(dic_number['Kiehls'][0]) & "</td>    </tr>    <tr>      <td>ESTEE LAUDER</td>      <td>" & Cstr(dic_number['ESTEE LAUDER'][1]) & "</td>      <td>" & Cstr(dic_number['ESTEE LAUDER'][0]) & "</td>    </tr>  <tr>      <td>Lancome</td>      <td>" & Cstr(dic_number['Lancome'][1]) & "</td>      <td>" & Cstr(dic_number['Lancome'][0]) & '''</td>    </tr>  </table>  
+
+<h4>Please refer the followings via,</h4> <h4>Please refer the followings via,</h4> <h4> Product Detail :<a href="https://pgone.sharepoint.com/sites/ChinaOlayinnovationCI/Shared%20Documents/Forms/AllItems.aspx?viewid=2ddb2cae%2D6f74%2D48c4%2Db8ce%2D409df8974861&noAuthRedirect=1">  (Product information) </a> </h4>        </body> </html>''', "html", ['''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx'''], "", "")
+*/

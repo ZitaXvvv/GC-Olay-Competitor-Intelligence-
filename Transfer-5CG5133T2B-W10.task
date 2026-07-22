@@ -1,0 +1,13 @@
+
+all_brand = ["PROYA","GUYU", "OSM", "Kiehls", "LOREAL", "ESTEE LAUDER", "SKIN CEUTICALS", "Lancome", "Kans", "BQL", "Winona", "Chando"]
+
+For Each brand In all_brand
+	Local_paths = File.DirFileOrFolder('''C:\Users\xie.x.3\Documents\Olay CI\''' & brand, "fileandfolder", {"hasPath": true})
+	For Each value_file in Local_paths
+		sName = File.BaseName(value_file, True)
+		TracePrint(value_file)
+		TracePrint(sName)
+		ee = sharepoint.upload_sharepoint_file('''https://pgone.sharepoint.com/sites/ChinaOlayinnovationCI''' , value_file, brand & "/" & sName)
+		TracePrint(ee)
+	Next 
+Next 

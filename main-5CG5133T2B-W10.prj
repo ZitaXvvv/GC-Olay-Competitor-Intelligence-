@@ -1,0 +1,413 @@
+{
+    "id": "41594df0-fbb8-11ee-a6d7-e34cc2945315",
+    "name": "CI",
+    "type": "flow",
+    "build": "",
+    "version": "6.0.1.220629",
+    "flow": [
+        {
+            "id": "start",
+            "rect": {
+                "x": 800,
+                "y": 150,
+                "width": 140,
+                "height": 50
+            },
+            "type": "begin",
+            "next": {
+                "refId": "41597500-fbb8-11ee-a6d7-e34cc2945315",
+                "vertices": []
+            },
+            "caption": "流程开始"
+        },
+        {
+            "type": "task",
+            "id": "41597500-fbb8-11ee-a6d7-e34cc2945315",
+            "rect": {
+                "x": 772,
+                "y": 300,
+                "width": 196,
+                "height": 64
+            },
+            "next": {
+                "refId": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+                "vertices": []
+            },
+            "exception": {
+                "refId": "",
+                "vertices": []
+            },
+            "file": "流程块.task",
+            "caption": "查产品",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+            "rect": {
+                "x": 1054,
+                "y": 300,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "下载pdf",
+            "next": {
+                "vertices": [],
+                "refId": "5559c701-3d32-4185-abc7-753ae8318ad9"
+            },
+            "exception": {},
+            "file": "流程块2.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26",
+            "rect": {
+                "x": 1514,
+                "y": 300,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "发送邮件\n",
+            "next": {},
+            "exception": {},
+            "file": "流程块3.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "thread_begin",
+            "id": "a7b18d1d-75f9-4279-b767-35750453d9f7",
+            "rect": {
+                "x": 1082,
+                "y": 173,
+                "width": 140,
+                "height": 50
+            },
+            "caption": "辅助流程开始",
+            "next": {
+                "vertices": [],
+                "refId": "0c85f216-ebfb-4800-ac02-9d7283a41cd5"
+            }
+        },
+        {
+            "type": "task",
+            "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
+            "rect": {
+                "x": 1304,
+                "y": 166,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "流程块1",
+            "next": {
+                "vertices": [],
+                "refId": ""
+            },
+            "exception": {},
+            "file": "流程块12.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "251fdad0-2710-11f0-89bb-e736b1030bb9",
+            "rect": {
+                "x": 1026,
+                "y": 616,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "发送邮件 - 新\n",
+            "next": {},
+            "exception": {},
+            "file": "流程块31.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {
+                "2": null,
+                "3": null,
+                "4": null,
+                "5": null,
+                "6": null,
+                "7": null,
+                "8": null,
+                "9": null,
+                "11": null,
+                "13": null,
+                "14": null,
+                "18": null,
+                "19": null,
+                "20": null,
+                "21": null,
+                "22": null,
+                "23": null,
+                "24": null,
+                "25": null,
+                "26": null,
+                "27": null,
+                "28": null,
+                "30": null,
+                "31": null,
+                "35": null,
+                "36": null,
+                "40": null,
+                "42": null,
+                "43": null,
+                "46": null
+            }
+        },
+        {
+            "type": "task",
+            "id": "5559c701-3d32-4185-abc7-753ae8318ad9",
+            "rect": {
+                "x": 1280,
+                "y": 310,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "Transfer to Sharepio",
+            "next": {
+                "vertices": [],
+                "refId": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26"
+            },
+            "exception": {},
+            "file": "Transfer.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "8960e9df-a5ad-4461-8514-ada342f0bb38",
+            "rect": {
+                "x": 760,
+                "y": 580,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "流程块",
+            "next": {},
+            "exception": {},
+            "file": "流程块1.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        }
+    ],
+    "variables": [
+        {
+            "type": "none",
+            "name": "g_temp",
+            "value": "null"
+        },
+        {
+            "name": "timepriod",
+            "value": "60",
+            "type": "none"
+        }
+    ],
+    "layout": {
+        "config": {
+            "global": {
+                "splitterSize": 1,
+                "splitterExtra": 8,
+                "enableEdgeDock": false,
+                "rootOrientationVertical": true,
+                "tabEnableClose": false,
+                "tabEnableRename": false,
+                "tabSetEnableDrag": false,
+                "tabSetEnableMaximize": false,
+                "tabSetMinWidth": 280,
+                "tabSetMinHeight": 200,
+                "borderBarSize": 24,
+                "borderAutoSelectTabWhenClosed": true,
+                "borderEnableAutoHide": true
+            },
+            "borders": [
+                {
+                    "type": "border",
+                    "selected": 1,
+                    "size": 250,
+                    "minSize": 250,
+                    "enableAutoHide": true,
+                    "location": "left",
+                    "children": [
+                        {
+                            "type": "tab",
+                            "id": "flow",
+                            "name": "流程",
+                            "component": "flowPanel",
+                            "config": {
+                                "i18nKey": "flow"
+                            },
+                            "className": ""
+                        },
+                        {
+                            "type": "tab",
+                            "id": "command",
+                            "name": "命令",
+                            "component": "commandPanel",
+                            "config": {
+                                "i18nKey": "command"
+                            },
+                            "className": ""
+                        },
+                        {
+                            "type": "tab",
+                            "id": "timeline",
+                            "name": "时间线",
+                            "component": "timeLinePanel",
+                            "config": {
+                                "i18nKey": "timeline"
+                            },
+                            "className": ""
+                        },
+                        {
+                            "type": "tab",
+                            "id": "search",
+                            "name": "搜索",
+                            "component": "searchPanel",
+                            "config": {
+                                "i18nKey": "search"
+                            },
+                            "className": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "border",
+                    "selected": 0,
+                    "size": 282,
+                    "minSize": 280,
+                    "location": "right",
+                    "children": [
+                        {
+                            "type": "tab",
+                            "id": "commandProperty",
+                            "name": "属性",
+                            "component": "commandPropertyPanel",
+                            "config": {
+                                "i18nKey": "property"
+                            },
+                            "className": ""
+                        },
+                        {
+                            "type": "tab",
+                            "id": "commandVariable",
+                            "name": "变量",
+                            "component": "commandVariablePanel",
+                            "config": {
+                                "i18nKey": "variable"
+                            },
+                            "className": ""
+                        }
+                    ]
+                }
+            ],
+            "layout": {
+                "type": "row",
+                "id": "body",
+                "children": [
+                    {
+                        "type": "tabset",
+                        "id": "#13230040-956b-44c7-b035-7db3a01e7059",
+                        "weight": 151.5021459227468,
+                        "selected": 2,
+                        "children": [
+                            {
+                                "type": "tab",
+                                "id": "41594df0-fbb8-11ee-a6d7-e34cc2945315",
+                                "name": "CI",
+                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\main.prj",
+                                "component": "flowEditor",
+                                "config": {
+                                    "type": "project",
+                                    "id": "41594df0-fbb8-11ee-a6d7-e34cc2945315"
+                                },
+                                "enableClose": false,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-flow.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+                                "name": "下载pdf",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\Digital & CI\\JTBD#10 Competitor Investigation\\CI New SKU Cross Brand\\流程块2.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
+                                    "type": "task",
+                                    "selector": [
+                                        "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            },
+                            {
+                                "type": "tab",
+                                "id": "5559c701-3d32-4185-abc7-753ae8318ad9",
+                                "name": "Transfer to Sharepio",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\Digital & CI\\JTBD#10 Competitor Investigation\\CI New SKU Cross Brand\\Transfer.task",
+                                "component": "taskNodeEditor",
+                                "config": {
+                                    "selfControl": true,
+                                    "id": "5559c701-3d32-4185-abc7-753ae8318ad9",
+                                    "type": "task",
+                                    "selector": [
+                                        "5559c701-3d32-4185-abc7-753ae8318ad9"
+                                    ]
+                                },
+                                "enableClose": true,
+                                "className": "",
+                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
+                            }
+                        ],
+                        "active": true
+                    },
+                    {
+                        "type": "tabset",
+                        "id": "buttom",
+                        "weight": 48.497854077253216,
+                        "height": 226,
+                        "config": {
+                            "height": 732,
+                            "selected": 0
+                        },
+                        "enableDrop": false,
+                        "enableDrag": false,
+                        "enableDivide": false,
+                        "enableClose": false,
+                        "minHeight": 32,
+                        "headerHeight": 32,
+                        "children": [
+                            {
+                                "type": "tab",
+                                "id": "output",
+                                "name": "输出",
+                                "component": "outputPanel",
+                                "config": {
+                                    "i18nKey": "output"
+                                },
+                                "enableDrag": false,
+                                "className": "",
+                                "enableRenderOnDemand": false
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "type": "flow",
+        "version": "1.0.21"
+    },
+    "flowConfig": {
+        "scrollbarPosition": {
+            "left": 1876,
+            "top": 498
+        },
+        "zoom": 1
+    }
+}

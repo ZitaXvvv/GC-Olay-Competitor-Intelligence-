@@ -1,0 +1,195 @@
+Dim objExcelWorkBook, temp, arrayRet, hWeb, iRet
+dic_Competitor = {}
+//dic_Competitor["PROYA"] = "珀莱雅"
+//dic_Competitor["GUYU"] = "谷雨"
+//dic_Competitor["OSM"] = "欧诗漫"
+//dic_Competitor["Kiehls"] = "科颜氏"
+//dic_Competitor["LOREAL"] = "欧莱雅"
+//dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+//dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+//dic_Competitor["Lancome"] = "兰蔻"
+//dic_Competitor["Chando"] = "自然堂"
+//dic_Competitor["Winona"] = "薇诺娜"
+
+dTime = Time.Date()
+sTime = Time.Format(dTime, "yyyy/m/d")
+TracePrint(sTime)
+timepriod = 75
+// 调用 改变输入法为英文
+
+
+objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
+
+For Each key, value In dic_Competitor
+	switch_ime.to_en()
+	//key = "Proya"
+	src = '''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key // Original download area
+
+	Try 
+
+		bRet = File.FolderExists('''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key)
+		if bRet
+			File.DeleteFolder('''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key)
+			Delay(1000)
+			File.CreateFolder('''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key)
+		Else
+			File.CreateFolder('''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key)
+			Delay(1000)
+		End If
+
+	Catch e
+		TracePrint(Cstr(e))
+	End try
+
+	//TracePrint(src)
+	filelist = file.DirFileOrFolder(src, '', {"hasPath": true})
+	For Each filepath In filelist
+		Log.Info("delete " & filepath)
+		File.DeleteFile(filepath)
+	Next 
+
+	Excel.ActiveSheet(objExcelWorkBook, key)
+
+	arrayRet = Excel.ReadRange(objExcelWorkBook, key, "A1", true)
+
+	If UBound(arrayRet) <> 0
+
+		For Each value In arrayRet
+			dTimeInTable = Time.CDate(value[0], "mm/dd/yyyy")
+			timediff = dTime-dTimeInTable
+			If timediff < timepriod
+				url = value[7]
+				TracePrint(value[7])
+				name = value[1]
+				TracePrint(value[1])
+
+				If url <> 'NA'
+					Try 
+						hWeb = WebBrowser.Create("edge", url, 30000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "sBrowserPath": "", "sStartArgs": ""})
+						//iRet_0 = InStr(url,"hzpsys.nifdc.org.cn",1,false)
+						iRet_1 = InStr(url, "hzpba.nmpa.gov.cn", 1, false) // 特殊化妆品 false 0
+						Delay(10000)
+
+						If iRet_1 <> 0
+							Mouse.Hover(@ui"容器<embed>4", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 10, "iCursorOffsetY": 10, "sKeyModifiers": ["Ctrl"], "sSimulate": "simulate", "bMoveSmoothly": false})
+
+							//Mouse.Click("left", "click", [], {"iDelayAfter": 300, "iDelayBefore": 300})
+							delay(1000)
+							
+							Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 300, "iDelayBefore": 200, "sSimulate": "uia"})
+							
+							bRet_20 = UiElement.Exists(@ui"窗口_gsxxFilePreview",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+							Delay(3000)
+							If bRet_20 <> True 
+								Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 1000, "sSimulate": "simulate"})
+							Delay(3000)
+								
+							End If
+
+							switch_ime.to_en()
+
+							Keyboard.InputText(@ui"窗口_gsxxFilePreview", src & '\\' & name & '.pdf', true, 20, 10000, {"bContinueOnError": false, "iDelayAfter": 1000, "iDelayBefore": 1000, "bSetForeground": true, "sSimulate": "simulate", "bValidate": false, "bClickBeforeInput": false})
+							Mouse.Action(@ui"窗格1", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
+							Delay(15000)
+							WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+							Confirm_success_Noti = src & '\\' & name & '.pdf'
+							TracePrint("Confirm_success_Noti" & Confirm_success_Noti)
+							//File.MoveFile(src & '\\' & name & '''.pdf''', src, false)
+						Else
+							//key = "PROYA"
+							//src = '''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key // Original download area
+							//name = "自然堂纯粹滋润精华液XYZXYZ"
+
+							bRet_T = UiElement.Exists(@ui"表格单元<td>_序号", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
+
+							if bRet_T
+								Mouse.Action(@ui"链接<a>_【立体图】珀莱雅轻享阳光舒护物理防晒霜.pdf", "left", "click", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
+								For i = 0 To 10 step 1
+									// 自带6秒等待时间
+									bRet_I = UiElement.Exists(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+									If bRet_I = False
+										delay(300)
+									Else
+										break
+									End If
+								Next 
+							End if
+
+							Mouse.Hover(@ui"窗格_CtrlVirtualCursorWin_0000024A776F8AC0", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 800, "bSetForeground": true, "sCursorPosition": "TopLeft", "iCursorOffsetX": 100, "iCursorOffsetY": 100, "sKeyModifiers": [], "sSimulate": "simulate", "bMoveSmoothly": false})
+							Mouse.Click("left", "click", [], {"iDelayAfter": 300, "iDelayBefore": 300})
+							//Keyboard.Press("S", "press", ["Ctrl"], {"iDelayAfter": 1000, "iDelayBefore": 3000, "sSimulate": "uia"})
+							//hWeb = WebBrowser.BindBrowser("edge", 10000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+							//Url = "https://www.nmpa.gov.cn/datasearch/preview-pdf.html?url=https://www.nmpa.gov.cn/datasearch/attach/upload/HZP_TSCP/CPBQYG/tagInfocca9886078bd11f0f03948c40e7a788a_20260210090434927.pdf"
+							url_parts = Split(url, "url=")
+							TracePrint(url_parts)
+							WebBrowser.Download(hWeb, url_parts[1], '''C:\Users\xie.x.3\Downloads''', true, 300000, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
+							// 改写下载方式，通过url的命名
+							//url_parts = Split(url, "/")
+							//filename = url_parts[Len(url_parts)-1]
+							// 拼接出下载的路径
+							//filename = "document.pdf"
+
+							filename_array = Split(url_parts[1], "/")
+							TracePrint(filename_array)
+							filename = filename_array[Len(filename_array)-1]
+
+							download_path = '''C:\Users\xie.x.3\Downloads\\''' & filename
+
+							For i = 0 To 10 step 1
+								bRet_F = File.FileExists(download_path)
+								If bRet_F = False
+									delay(3000)
+								Else
+									break
+								End If
+							Next 
+
+							//key = "Proya"
+							//src = '''C:\Users\xie.x.3\Documents\Olay CI''' & "\\" & key
+							//filename = "tagInfocca9886078bd11f0f03948c40e7a788a_20260210090434927.pdf"
+							//download_path = '''C:\Users\xie.x.3\Downloads\\''' & filename
+							//name = "XXXX"
+							File.MoveFile(download_path, src) // 1st download to "download" filefolder
+							switch_ime.to_en()
+							File.RenameEx(src & '\\' & filename, "特化--" & name & '.pdf')
+							Confirm_success_Reg = src & "特化--" & name & '.pdf'
+							TracePrint (Confirm_success_Reg)
+							
+							Delay(2000)
+							WebBrowser.Close(hWeb, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+
+						End If
+					Catch e
+						Log.Error("download failed: " & name & CStr(e))
+					End Try
+				End If
+
+			End If
+		Next 
+
+	End If
+
+
+
+
+Next 
+Excel.CloseExcel(objExcelWorkBook, false)
+Delay(60000)
+
+//test sharepoint
+/*
+all_brand = ["PROYA", "GUYU", "OSM", "Kiehls", "LOREAL", "ESTEE LAUDER", "SKIN CEUTICALS", "Lancome"]
+
+For Each brand In all_brand
+	pdf_paths = File.DirFileOrFolder('''"C:\Users\xie.x.3\Documents\Olay CI"''' & brand, "fileandfolder", {"hasPath": true})
+	For Each value_file in pdf_paths
+		sName = File.BaseName(value_file, True)
+		TracePrint(value_file)
+		TracePrint(sName)
+		sharepoint.update_file(value_file, brand)
+
+	Next 
+Next 
+*/

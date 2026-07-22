@@ -1,8 +1,0 @@
-Try
-    Mouse.Action(@ui"链接<a>_预览","left","click",10000,{"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200, "bSetForeground": true, "sCursorPosition": "Center", "iCursorOffsetX": 0, "iCursorOffsetY": 0, "sKeyModifiers": [],"sSimulate": "simulate", "bMoveSmoothly": false})
-Catch e
-    TracePrint(Cstr(e))
-End try
-
-// 假设
-TracePrint("关闭Excel")
