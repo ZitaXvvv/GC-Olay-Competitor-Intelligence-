@@ -505,6 +505,15 @@ def product_card_html(prod: dict, en_name: str) -> str:
     pid = prod.get("_pid", "")
     drag_attrs = (f'draggable="true" data-pid="{pid}" ondragstart="cmpDragStart(event)"'
                   if pid else "")
+    # Artwork/POC 按钮始终可见（放在 <details> 外部，卡片底部）
+    always_btns = ""
+    if prod["pdf_url"]:
+        always_btns += f'<a href="{prod["pdf_url"]}" target="_blank" class="btn btn-art">&#x1F5BC; Artwork</a>'
+    if prod["label_url"]:
+        always_btns += f'<a href="{prod["label_url"]}" target="_blank" class="btn btn-lbl">&#x1F3F7; Label</a>'
+    if prod["poc_url"]:
+        always_btns += f'<a href="{prod["poc_url"]}" target="_blank" class="btn btn-poc">&#x1F9EA; POC</a>'
+    always_btn_block = f'<div class="btn-row" style="padding:4px 8px 6px">{always_btns}</div>' if always_btns else ""
     return f"""<div class="{card_cls}" {drag_attrs}>
   <details>
     <summary>
@@ -515,9 +524,10 @@ def product_card_html(prod: dict, en_name: str) -> str:
       {badge}
     </summary>
     <div class="prod-body">
-      {en_block}{eff_block}{ingr_block}{btn_block}
+      {en_block}{eff_block}{ingr_block}
     </div>
   </details>
+  {always_btn_block}
 </div>"""
 
 
@@ -668,9 +678,9 @@ _FLOATING_CMP_CSS = """
   }
 
   #cmp-toggle-btn {
-    position: fixed; right: 20px; bottom: 20px;
+    position: fixed; right: 20px; top: 18px;
     background: #1565c0; color: #fff; border: none; border-radius: 30px;
-    padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+    padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
     box-shadow: 0 4px 14px rgba(0,0,0,.25); z-index: 9999;
     display: flex; align-items: center; gap: 6px;
   }
@@ -1024,7 +1034,7 @@ def main():
     default_labels = brand_labels  # 默认全选
 
     # ── 筛选栏 ──
-    c1, c2, c3, c4 = st.columns([3, 2, 1.5, 0.5])
+    c1, c2, c3, c4, c5 = st.columns([3, 2, 1.5, 0.5, 0.5])
 
     with c1:
         sel_brand_labels = st.multiselect(
@@ -1049,6 +1059,8 @@ def main():
     with c4:
         if st.button("✔ All", use_container_width=True, help="Select all brands"):
             st.session_state["展开品牌"] = True  # trigger rerun with all selected
+    with c5:
+        show_en = st.toggle("EN", value=False, help="Show English product name translation")
 
     if not selected_brands:
         selected_brands = all_brand_keys
@@ -1082,6 +1094,12 @@ def main():
     """, unsafe_allow_html=True)
 
     # ── 月历（每个选中年份一张）+ 悬浮成分对比层 ──
+    # 翻译缓存（只在 EN 开关打开时填充）
+    trans_cache: dict = {}
+    if show_en:
+        names = [r["name"] for r in filtered]
+        trans_cache = translate_batch(names, get_translation_cache())
+
     # 悬浮层需要和卡片在同一个 DOM 内才能捕获拖拽事件，所以把所有年份的
     # 月历 + 悬浮开关按钮 + 抽屉一起放进一个 components.v1.html 文档里渲染。
     for i, r in enumerate(filtered):
@@ -1096,7 +1114,7 @@ def main():
         if not yr_filtered:
             continue
         months = [(f"{yr}-{m:02d}", month_labels[m-1]) for m in range(1, 13)]
-        cal_html = build_calendar_html(yr_filtered, selected_brands, months, {})
+        cal_html = build_calendar_html(yr_filtered, selected_brands, months, trans_cache)
         year_sections += f"""
         <h3 style="color:#1a2b4a;margin:18px 0 6px;font-family:'Inter',sans-serif">📅 {yr}</h3>
         {cal_html}"""
