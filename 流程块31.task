@@ -1,0 +1,46 @@
+Dim objExcelWorkBook, bRet
+dic_Competitor = {}
+dic_Competitor["PROYA"] = "珀莱雅"
+//dic_Competitor["GUYU"] = "谷雨"
+dic_Competitor["OSM"] = "欧诗漫"
+//dic_Competitor["KANS"] = "韩束"
+dic_Competitor["LOREAL"] = "欧莱雅"
+//dic_Competitor["ESTEE LAUDER"] = "雅诗兰黛"
+//dic_Competitor["SKIN CEUTICALS"] = "修丽可"
+
+dTime = Time.Date()
+//dTime = Time.DateSerial(2024, 7, 8)
+sTime = Time.Format(dTime, "yyyy/m/d")
+TracePrint(sTime)
+
+
+
+objExcelWorkBook = Excel.OpenExcel('''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx''', true, "Excel", "", "")
+str = ''
+dic_number = {}
+For Each key, value In dic_Competitor
+	arr_ = [-1, -1]
+	Excel.ActiveSheet(objExcelWorkBook, key)
+	arrayRet = Excel.ReadRange(objExcelWorkBook, key, "A1", true)
+	If UBound(arrayRet) <> 0
+		For Each value In arrayRet
+			If value[3] <> ''
+				arr_[0] = arr_[0]+1
+			End If
+			If value[5] <> ''
+				arr_[1] = arr_[1]+1
+
+			End If
+		Next 
+	Else
+		arr_ = [0, 0]
+
+	End If
+
+	dic_number[key] = arr_
+Next 
+str = str & '\n'
+Excel.CloseExcel(objExcelWorkBook, true)
+
+
+bRet = Outlook.SendMail("xie.x.3@pg.com", "xie.x.3@pg.com", "<Info Sharing>CI of new notification & Registration " & sTime, "<p>Dear SI team,</p>\n\n<p>I am Ada, your digital assistant, and I am excited to share some valuable insights with you. Please refer to the attached document and the link below for the new products completed notification/registration from our key competitors, including Proya, OSM, L'Oréal, KANS, Estée Lauder, and SkinCeuticals.</p>\n\n<p><a href=\"file:///C:/Users/xie.x.3/OneDrive - Procter and Gamble/Olay Digial UI-Bot files/CI New SKU pdf\">C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Olay Digial UI-Bot files\\CI New SKU pdf</a></p>\n\n<p>I am still building my capabilities in competitive intelligence (CI) and look forward to continuously innovating with you as we explore these developments further.</p>\n\n<p>Thank you for your attention, and please feel free to reach out if you have any questions or need further assistance.</p>\n\n<p>Best regards,</p>\n\n<p>Ada</p>", "html", ['''C:\Users\xie.x.3\Documents\Olay CI\CI_List_Ada.xlsx'''], "", "")
