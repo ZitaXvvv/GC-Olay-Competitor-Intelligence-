@@ -1,20 +1,20 @@
 Do While True
 	// 判断是否有滑块
-	bRet = UiElement.Exists(@ui"", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+	bRet = UiElement.Exists(@ui"块级元素<div>_扫描二维码发送验证短信无法扫描二维码点击按钮发送验证短信:去发送验证短信无法跳转1", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 	If bRet = 1
 		TracePrint("解决滑块验证")
 		// 截图整个滑块界面
-		UiElement.ScreenCapture('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\滑块验证图片.png''', @ui"", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+		UiElement.ScreenCapture('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital & CI\JTBD#10 Competitor Investigation\CI New SKU Cross Brand\滑块验证图片.png''', @ui"块级元素<div>_扫描二维码发送验证短信无法扫描二维码点击按钮发送验证短信:去发送验证短信无法跳转", {"x": 0, "y": 0, "width": 0, "height": 0}, {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 		// offset是整数，表示要拖动多少个像素
-        // `pass_captcha`
-		offset = pass_captcha.slider('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital\CI New SKU Cross Brand\extend\python\pass_captcha.py''')
+		// `pass_captcha`
+		offset = pass_captcha.slider('''C:\Users\xie.x.3\OneDrive - Procter and Gamble\Desktop\Digital & CI\JTBD#10 Competitor Investigation\CI New SKU Cross Brand\extend\python\pass_captcha.py''')
 		// 精准获取滑块的位置
-		objRect = UiElement.GetRect(@ui"块级元素<div>_请搜索1-10个工厂", "screen", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
+		objRect = UiElement.GetRect(@ui"块级元素<div>_", "screen", {"bContinueOnError": false, "iDelayAfter": 300, "iDelayBefore": 200})
 		// 计算
-        // 滑块中心位置
-        x = Cint(objRect['x']+objRect['width']/2)
-        y = Cint(objRect['y']+objRect['height']/2)
-        Mouse.Drag(x, y, x+offset, y, "left", [], {"iDelayAfter": 300, "iDelayBefore": 200})
+		// 滑块中心位置
+		x = Cint(objRect['x']+objRect['width']/2)
+		y = Cint(objRect['y']+objRect['height']/2)
+		Mouse.Drag(x, y, x+offset, y, "left", [], {"iDelayAfter": 300, "iDelayBefore": 200})
 	End If
-    Delay(1000)
+	Delay(1000)
 Loop

@@ -39,31 +39,8 @@
             },
             "file": "流程块.task",
             "caption": "查产品",
-            "editorMode": "visual",
-            "breakpoints": {
-                "374": "enable"
-            }
-        },
-        {
-            "type": "task",
-            "id": "06acd8dd-a90e-4fdf-90c3-6f89c32fb85f",
-            "rect": {
-                "x": 1040,
-                "y": 410,
-                "width": 196,
-                "height": 64
-            },
-            "caption": "查品牌主数据",
-            "next": {
-                "vertices": [],
-                "refId": ""
-            },
-            "exception": {},
-            "file": "流程块1.task",
             "editorMode": "sourceCode",
-            "breakpoints": {
-                "45": "enable"
-            }
+            "breakpoints": {}
         },
         {
             "type": "task",
@@ -77,64 +54,18 @@
             "caption": "下载pdf",
             "next": {
                 "vertices": [],
-                "refId": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26"
+                "refId": "5559c701-3d32-4185-abc7-753ae8318ad9"
             },
             "exception": {},
             "file": "流程块2.task",
             "editorMode": "sourceCode",
-            "breakpoints": {
-                "2": null,
-                "3": null,
-                "8": null,
-                "11": null,
-                "13": null,
-                "14": null,
-                "16": null,
-                "17": null,
-                "18": null,
-                "19": null,
-                "22": null,
-                "24": null,
-                "27": null,
-                "31": null,
-                "33": null,
-                "35": null,
-                "37": null,
-                "38": null,
-                "39": null,
-                "40": null,
-                "41": null,
-                "42": null,
-                "43": null,
-                "45": null,
-                "47": null,
-                "48": null,
-                "50": null,
-                "51": null,
-                "52": null,
-                "54": null,
-                "55": null,
-                "56": "disable",
-                "57": null,
-                "59": null,
-                "60": null,
-                "61": null,
-                "62": null,
-                "64": null,
-                "65": null,
-                "67": null,
-                "68": null,
-                "69": null,
-                "70": null,
-                "71": null,
-                "83": null
-            }
+            "breakpoints": {}
         },
         {
             "type": "task",
             "id": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26",
             "rect": {
-                "x": 1304,
+                "x": 1514,
                 "y": 300,
                 "width": 196,
                 "height": 64
@@ -143,45 +74,8 @@
             "next": {},
             "exception": {},
             "file": "流程块3.task",
-            "editorMode": "visual",
-            "breakpoints": {}
-        },
-        {
-            "type": "task",
-            "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
-            "rect": {
-                "x": 772,
-                "y": 433,
-                "width": 196,
-                "height": 64
-            },
-            "caption": "流程块",
-            "next": {},
-            "exception": {},
-            "file": "流程块4.task",
             "editorMode": "sourceCode",
             "breakpoints": {}
-        },
-        {
-            "type": "task",
-            "id": "3c1cc430-24c9-11f0-905d-612d1e9d6fa9",
-            "rect": {
-                "x": 1010,
-                "y": 497,
-                "width": 196,
-                "height": 64
-            },
-            "caption": "查品牌主数据- ver2 加循环",
-            "next": {
-                "vertices": [],
-                "refId": ""
-            },
-            "exception": {},
-            "file": "流程块11.task",
-            "editorMode": "sourceCode",
-            "breakpoints": {
-                "50": "enable"
-            }
         },
         {
             "type": "thread_begin",
@@ -208,9 +102,94 @@
                 "height": 64
             },
             "caption": "流程块1",
-            "next": {},
+            "next": {
+                "vertices": [],
+                "refId": ""
+            },
             "exception": {},
             "file": "流程块12.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "251fdad0-2710-11f0-89bb-e736b1030bb9",
+            "rect": {
+                "x": 1026,
+                "y": 616,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "发送邮件 - 新\n",
+            "next": {},
+            "exception": {},
+            "file": "流程块31.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {
+                "2": null,
+                "3": null,
+                "4": null,
+                "5": null,
+                "6": null,
+                "7": null,
+                "8": null,
+                "9": null,
+                "11": null,
+                "13": null,
+                "14": null,
+                "18": null,
+                "19": null,
+                "20": null,
+                "21": null,
+                "22": null,
+                "23": null,
+                "24": null,
+                "25": null,
+                "26": null,
+                "27": null,
+                "28": null,
+                "30": null,
+                "31": null,
+                "35": null,
+                "36": null,
+                "40": null,
+                "42": null,
+                "43": null,
+                "46": null
+            }
+        },
+        {
+            "type": "task",
+            "id": "5559c701-3d32-4185-abc7-753ae8318ad9",
+            "rect": {
+                "x": 1284,
+                "y": 300,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "Transfer to Sharepio",
+            "next": {
+                "vertices": [],
+                "refId": "2ac1a824-f6ad-47c5-96bb-55e2d5b7dc26"
+            },
+            "exception": {},
+            "file": "Transfer.task",
+            "editorMode": "sourceCode",
+            "breakpoints": {}
+        },
+        {
+            "type": "task",
+            "id": "8960e9df-a5ad-4461-8514-ada342f0bb38",
+            "rect": {
+                "x": 760,
+                "y": 580,
+                "width": 196,
+                "height": 64
+            },
+            "caption": "流程块",
+            "next": {},
+            "exception": {},
+            "file": "流程块1.task",
             "editorMode": "sourceCode",
             "breakpoints": {}
         }
@@ -220,6 +199,11 @@
             "type": "none",
             "name": "g_temp",
             "value": "null"
+        },
+        {
+            "name": "timepriod",
+            "value": "60",
+            "type": "none"
         }
     ],
     "layout": {
@@ -242,7 +226,7 @@
             "borders": [
                 {
                     "type": "border",
-                    "selected": 1,
+                    "selected": 0,
                     "size": 250,
                     "minSize": 250,
                     "enableAutoHide": true,
@@ -293,7 +277,7 @@
                 {
                     "type": "border",
                     "selected": 0,
-                    "size": 281.1875,
+                    "size": 282,
                     "minSize": 280,
                     "location": "right",
                     "children": [
@@ -327,8 +311,7 @@
                     {
                         "type": "tabset",
                         "id": "#13230040-956b-44c7-b035-7db3a01e7059",
-                        "weight": 123.17596566523605,
-                        "selected": 4,
+                        "weight": 151.5021459227468,
                         "children": [
                             {
                                 "type": "tab",
@@ -346,45 +329,9 @@
                             },
                             {
                                 "type": "tab",
-                                "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
-                                "name": "流程块",
-                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块4.task",
-                                "component": "taskNodeEditor",
-                                "config": {
-                                    "selfControl": true,
-                                    "id": "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0",
-                                    "type": "task",
-                                    "selector": [
-                                        "2ae9b4ea-cdd5-4cc2-9248-55b5a4c3f4e0"
-                                    ]
-                                },
-                                "enableClose": true,
-                                "className": "",
-                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
-                            },
-                            {
-                                "type": "tab",
-                                "id": "41597500-fbb8-11ee-a6d7-e34cc2945315",
-                                "name": "查产品",
-                                "helpText": "F:\\美妆网站项目\\美妆网站项目\\CI\\流程块.task",
-                                "component": "taskNodeEditor",
-                                "config": {
-                                    "selfControl": true,
-                                    "id": "41597500-fbb8-11ee-a6d7-e34cc2945315",
-                                    "type": "task",
-                                    "selector": [
-                                        "41597500-fbb8-11ee-a6d7-e34cc2945315"
-                                    ]
-                                },
-                                "enableClose": true,
-                                "className": "",
-                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
-                            },
-                            {
-                                "type": "tab",
                                 "id": "f21b67a3-e3b8-4e4d-a6ac-b150d61f7a7e",
                                 "name": "下载pdf",
-                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\CI\\流程块2.task",
+                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\Digital & CI\\JTBD#10 Competitor Investigation\\CI New SKU Cross Brand\\流程块2.task",
                                 "component": "taskNodeEditor",
                                 "config": {
                                     "selfControl": true,
@@ -397,24 +344,6 @@
                                 "enableClose": true,
                                 "className": "",
                                 "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
-                            },
-                            {
-                                "type": "tab",
-                                "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
-                                "name": "流程块1",
-                                "helpText": "C:\\Users\\xie.x.3\\OneDrive - Procter and Gamble\\Desktop\\Digital\\CI New SKU Cross Brand\\流程块12.task",
-                                "component": "taskNodeEditor",
-                                "config": {
-                                    "selfControl": true,
-                                    "id": "0c85f216-ebfb-4800-ac02-9d7283a41cd5",
-                                    "type": "task",
-                                    "selector": [
-                                        "0c85f216-ebfb-4800-ac02-9d7283a41cd5"
-                                    ]
-                                },
-                                "enableClose": true,
-                                "className": "",
-                                "icon": "../../../assets/_/pages-next/home/childrens/main/assets/tab-task.png"
                             }
                         ],
                         "active": true
@@ -422,8 +351,12 @@
                     {
                         "type": "tabset",
                         "id": "buttom",
-                        "weight": 76.82403433476395,
-                        "height": 358,
+                        "weight": 48.497854077253216,
+                        "height": 226,
+                        "config": {
+                            "height": 732,
+                            "selected": 0
+                        },
                         "enableDrop": false,
                         "enableDrag": false,
                         "enableDivide": false,
@@ -453,9 +386,9 @@
     },
     "flowConfig": {
         "scrollbarPosition": {
-            "left": 1939,
-            "top": 643
+            "left": 1301,
+            "top": 598
         },
-        "zoom": 1.2
+        "zoom": 1
     }
 }

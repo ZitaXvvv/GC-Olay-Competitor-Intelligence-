@@ -1,3 +1,25 @@
+# ── 临时 / 系统 ──
 /~$temp/**
 /trash/**
 /temp/**
+*.pyc
+*.pyo
+__pycache__/
+
+# ── 第三方 vendor 库（extend/python/win32* / msal / PyJWT 等） ──
+/extend/
+
+# ── 抓取产出的大文件 / 二进制 ──
+/log/
+/Olay CI/
+*.pdf
+*.jpeg
+*.jpg
+*.png
+/ui/
+/res/
+
+# ── 运行时生成 / 敏感凭据 ──
+src/bebd_cookies.json
+src/translations_cache.json
+src/checkpoint.json
