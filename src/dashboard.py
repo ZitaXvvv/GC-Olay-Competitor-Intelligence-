@@ -903,6 +903,35 @@ _FLOATING_CMP_CSS = """
   .cmp-cell.moved-d { color: #e65100; background: #fff3e0; border-radius: 3px; }
   .cmp-cell.added   { color: #1b5e20; background: #e8f5e9; border-radius: 3px; }
   .cmp-cell.removed { color: #b71c1c; background: #ffebee; border-radius: 3px; text-decoration: line-through; }
+
+  #print-btn {
+    position: fixed; right: 150px; top: 18px;
+    background: #37474f; color: #fff; border: none; border-radius: 30px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,.25); z-index: 9999;
+    display: flex; align-items: center; gap: 6px;
+  }
+  #print-btn:hover { background: #1a2b4a; }
+
+  /* ── 打印样式：让整份月历(所有品牌/季度)完整分页打印，
+     成分对比抽屉强制换页放到最后一页 ── */
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    #print-btn, #cmp-toggle-btn, #cmp-resize-handle, .cmp-close-btn { display: none !important; }
+    body { background: #fff !important; padding-bottom: 0 !important; }
+    .cal-wrap { box-shadow: none !important; }
+    .cal-th-brand, .cal-brand { position: static !important; }
+    .cal-table tr { page-break-inside: avoid; }
+    #cmp-drawer {
+      position: static !important;
+      height: auto !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      box-shadow: none !important;
+      page-break-before: always;
+    }
+    #cmp-drawer-inner { overflow: visible !important; height: auto !important; }
+  }
 </style>
 """
 
@@ -934,6 +963,7 @@ def _build_products_map(filtered: list[dict]) -> str:
 def _build_compare_widget_html(products_json: str) -> str:
     """悬浮开关按钮 + 可展开抽屉（两个拖拽槽 + JS 成分对比表）"""
     return f"""
+<button id="print-btn" onclick="window.print()" title="打印/导出PDF：会完整打印所有品牌与季度，成分对比放在最后一页">🖨️ Print</button>
 <button id="cmp-toggle-btn" onclick="cmpToggleDrawer()">🔬 Compare <span id="cmp-badge">0/2</span></button>
 <div id="cmp-drawer">
   <div id="cmp-resize-handle" title="Drag to resize"></div>
